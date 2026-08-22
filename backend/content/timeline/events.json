@@ -1,0 +1,242 @@
+[
+  {
+    "id": "perceptron-1958",
+    "era": "Rule-based systems and early neural nets",
+    "year_label": "1958",
+    "title": "The Perceptron",
+    "summary": "Frank Rosenblatt's Perceptron was one of the first algorithms that could learn a linear decision boundary from labeled examples, rather than being explicitly programmed with rules.",
+    "tags": ["neural-networks", "history"]
+  },
+  {
+    "id": "eliza-1966",
+    "era": "Rule-based systems and early neural nets",
+    "year_label": "1966",
+    "title": "ELIZA",
+    "summary": "Joseph Weizenbaum's ELIZA simulated a conversation using pattern matching and scripted rules, with no learning or understanding involved, yet convinced many users they were talking to something intelligent.",
+    "tags": ["nlp", "history"]
+  },
+  {
+    "id": "backprop-1986",
+    "era": "Classical machine learning",
+    "year_label": "1986",
+    "title": "Backpropagation popularized",
+    "summary": "Rumelhart, Hinton, and Williams showed backpropagation could efficiently train multi-layer neural networks, giving the field a practical way to adjust every weight in a network based on its errors.",
+    "tags": ["training", "history"]
+  },
+  {
+    "id": "svm-1995",
+    "era": "Classical machine learning",
+    "year_label": "1995",
+    "title": "Support Vector Machines mature",
+    "summary": "SVMs became a dominant approach for classification tasks through the 1990s and 2000s, relying on hand-engineered features rather than learned representations.",
+    "tags": ["classical-ml", "history"]
+  },
+  {
+    "id": "alexnet-2012",
+    "era": "Deep learning",
+    "year_label": "2012",
+    "title": "AlexNet",
+    "summary": "A deep convolutional neural network trained on GPUs dramatically beat the previous state of the art on the ImageNet competition, kicking off the modern deep learning era.",
+    "tags": ["deep-learning", "computer-vision"]
+  },
+  {
+    "id": "word2vec-2013",
+    "era": "Deep learning",
+    "year_label": "2013",
+    "title": "word2vec",
+    "summary": "Mikolov et al. showed that simple neural networks could learn dense word embeddings from raw text, where words with similar meanings ended up with similar vectors.",
+    "tags": ["embeddings", "nlp"]
+  },
+  {
+    "id": "seq2seq-2014",
+    "era": "Deep learning",
+    "year_label": "2014",
+    "title": "Sequence-to-sequence models with attention",
+    "summary": "Bahdanau et al. introduced an attention mechanism for neural machine translation, letting a model look back at relevant input words instead of compressing a whole sentence into one fixed vector.",
+    "tags": ["attention", "nlp"]
+  },
+  {
+    "id": "transformer-2017",
+    "era": "Transformers",
+    "year_label": "2017",
+    "title": "Attention Is All You Need",
+    "summary": "Vaswani et al. showed that attention alone, without recurrence or convolution, was enough to build state-of-the-art sequence models, and dramatically more parallelizable to train.",
+    "tags": ["transformers", "attention", "landmark-paper"]
+  },
+  {
+    "id": "bert-2018",
+    "era": "Transformers",
+    "year_label": "2018",
+    "title": "BERT",
+    "summary": "Google's BERT applied bidirectional transformer pretraining to language understanding tasks, setting new benchmarks across a wide range of NLP problems.",
+    "tags": ["transformers", "pretraining"]
+  },
+  {
+    "id": "gpt2-2019",
+    "era": "Large language models",
+    "year_label": "2019",
+    "title": "GPT-2",
+    "summary": "OpenAI's GPT-2 demonstrated that a large transformer trained only to predict the next token could generate coherent, general-purpose text across many tasks without task-specific training.",
+    "tags": ["llm", "generative"]
+  },
+  {
+    "id": "gpt3-2020",
+    "era": "Large language models",
+    "year_label": "2020",
+    "title": "GPT-3",
+    "summary": "Scaling the same next-token-prediction approach to 175 billion parameters produced a model that could perform new tasks from just a handful of examples in its prompt, with no retraining.",
+    "tags": ["llm", "scaling", "few-shot"]
+  },
+  {
+    "id": "chatgpt-2022",
+    "era": "Large language models",
+    "year_label": "2022",
+    "title": "ChatGPT",
+    "summary": "Fine-tuning a GPT-3.5 model on human feedback (RLHF) and packaging it as a conversational assistant brought LLMs to hundreds of millions of everyday users almost overnight.",
+    "tags": ["llm", "rlhf", "chat"]
+  },
+  {
+    "id": "llama-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "LLaMA",
+    "summary": "Meta released LLaMA, a family of open-weights language models from 7 billion to 65 billion parameters, showing that smaller models trained on more data could match much larger closed models and kicking off a wave of open-weights research and fine-tuning.",
+    "tags": ["llm", "open-weights"]
+  },
+  {
+    "id": "gpt4-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "GPT-4",
+    "summary": "OpenAI's GPT-4 accepted both text and images as input and passed several professional and academic benchmarks at a human level, becoming the new reference point for frontier model capability.",
+    "tags": ["llm", "multimodal"]
+  },
+  {
+    "id": "claude-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "Claude",
+    "summary": "Anthropic released its first Claude models through its API, trained with Constitutional AI, an approach that uses a set of written principles to guide model behavior instead of relying only on human-labeled preferences.",
+    "tags": ["llm", "rlhf", "chat"]
+  },
+  {
+    "id": "dpo-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "Direct Preference Optimization",
+    "summary": "Rafailov et al. introduced DPO, a way to align a language model with human preference data by optimizing a simple classification loss directly on that data, without training a separate reward model or running reinforcement learning.",
+    "tags": ["rlhf", "alignment", "training"]
+  },
+  {
+    "id": "function-calling-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "Function calling and tool use",
+    "summary": "OpenAI added function calling to its API, letting a model output a structured call to a developer-defined function instead of only free text, a pattern other providers adopted and that became the basis for most agent and tool-use frameworks.",
+    "tags": ["tool-use", "agents"]
+  },
+  {
+    "id": "llama2-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "Llama 2",
+    "summary": "Meta released Llama 2 with a license that permitted commercial use, a shift from the research-only terms of the original LLaMA that helped establish open-weights models as viable options for production products.",
+    "tags": ["llm", "open-weights"]
+  },
+  {
+    "id": "gemini-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "Gemini 1.0",
+    "summary": "Google introduced Gemini as its first natively multimodal model family, built and trained to handle text, images, audio, and video together rather than adding vision onto a text-only model afterward.",
+    "tags": ["llm", "multimodal"]
+  },
+  {
+    "id": "mixtral-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "Mixtral 8x7B",
+    "summary": "Mistral AI released Mixtral, an open-weights sparse mixture-of-experts model that routed each token to 2 of 8 expert sub-networks per layer, matching or beating much larger dense models while activating only a fraction of its total parameters at inference time.",
+    "tags": ["moe", "open-weights", "llm"]
+  },
+  {
+    "id": "rag-2023",
+    "era": "Large language models",
+    "year_label": "2023",
+    "title": "Retrieval-augmented generation goes mainstream",
+    "summary": "As developers ran into the limits of a model's fixed training data and context window, retrieving relevant documents at query time and inserting them into the prompt, an idea first described by Lewis et al. in 2020, became the standard way to ground LLM applications in external or up-to-date information.",
+    "tags": ["rag", "retrieval"]
+  },
+  {
+    "id": "gemini15-2024",
+    "era": "Large language models",
+    "year_label": "2024",
+    "title": "Gemini 1.5 and the long-context race",
+    "summary": "Google previewed Gemini 1.5 Pro with a context window of up to 1 million tokens, far beyond prior commercial models, prompting a broader industry push toward long-context models that could hold entire codebases or books in a single prompt.",
+    "tags": ["long-context", "llm"]
+  },
+  {
+    "id": "llama3-2024",
+    "era": "Large language models",
+    "year_label": "2024",
+    "title": "Llama 3",
+    "summary": "Meta released Llama 3, trained on over 15 trillion tokens, which closed much of the performance gap between open-weights and the best closed models of the time and became a widely used base for fine-tuned and specialized models.",
+    "tags": ["llm", "open-weights"]
+  },
+  {
+    "id": "gpt4o-2024",
+    "era": "Large language models",
+    "year_label": "2024",
+    "title": "GPT-4o",
+    "summary": "OpenAI's GPT-4o was trained end-to-end across text, vision, and audio in a single model, cutting voice-conversation latency to near real-time and making natively multimodal interaction, rather than separate models stitched together, the new default.",
+    "tags": ["llm", "multimodal"]
+  },
+  {
+    "id": "o1-2024",
+    "era": "Agentic and reasoning models",
+    "year_label": "2024",
+    "title": "OpenAI o1 and inference-time reasoning",
+    "summary": "OpenAI released o1, a model trained to generate an extended internal chain of reasoning before answering, trading more computation at inference time for better performance on math, coding, and science problems, a technique often called test-time or inference-time scaling.",
+    "tags": ["reasoning", "inference-time-scaling"]
+  },
+  {
+    "id": "mcp-2024",
+    "era": "Agentic and reasoning models",
+    "year_label": "2024",
+    "title": "Model Context Protocol",
+    "summary": "Anthropic open-sourced the Model Context Protocol, a standard way for a language model to connect to external data sources and tools, aimed at replacing one-off custom integrations with a common interface that any compatible client or server could use.",
+    "tags": ["mcp", "tool-use", "agents"]
+  },
+  {
+    "id": "deepseekr1-2025",
+    "era": "Agentic and reasoning models",
+    "year_label": "2025",
+    "title": "DeepSeek-R1",
+    "summary": "DeepSeek released R1, an open-weights reasoning model trained largely with reinforcement learning, that matched OpenAI's o1 on several benchmarks at a fraction of the reported training cost and showed its full chain of reasoning to users.",
+    "tags": ["reasoning", "open-weights", "rlhf"]
+  },
+  {
+    "id": "claude4-2025",
+    "era": "Agentic and reasoning models",
+    "year_label": "2025",
+    "title": "Claude 4",
+    "summary": "Anthropic released Claude Opus 4 and Claude Sonnet 4, hybrid models that could switch between a fast response mode and an extended thinking mode, with a particular focus on sustained multi-step coding and agentic tasks.",
+    "tags": ["reasoning", "agents", "llm"]
+  },
+  {
+    "id": "gpt5-2025",
+    "era": "Agentic and reasoning models",
+    "year_label": "2025",
+    "title": "GPT-5",
+    "summary": "OpenAI released GPT-5 as a system that automatically routes each request between a fast-response mode and a deeper reasoning mode depending on the task, rather than requiring users to pick between separate model families.",
+    "tags": ["reasoning", "llm"]
+  },
+  {
+    "id": "gemini3-2025",
+    "era": "Agentic and reasoning models",
+    "year_label": "2025",
+    "title": "Gemini 3",
+    "summary": "Google released Gemini 3, its next-generation multimodal and reasoning model family, including a DeepThink variant for extended reasoning, continuing the shift toward models that scale performance with more inference-time computation.",
+    "tags": ["reasoning", "multimodal", "llm"]
+  }
+]

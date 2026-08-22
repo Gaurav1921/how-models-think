@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "transformers",
+    "title": "Transformers and Attention Is All You Need",
+    "summary": "A visual, step-by-step walkthrough of how a transformer turns text into a prediction, from tokens to attention to the next word.",
+    "status": "live"
+  },
+  {
+    "slug": "rnn",
+    "title": "Recurrent neural networks",
+    "summary": "How models processed sequences before transformers, one token at a time, and why that stopped scaling.",
+    "status": "live"
+  },
+  {
+    "slug": "backpropagation",
+    "title": "Backpropagation and gradient descent",
+    "summary": "How a network turns a wrong guess into a slightly better set of weights, one training step at a time.",
+    "status": "live"
+  },
+  {
+    "slug": "feed-forward-networks",
+    "title": "Feed-forward networks",
+    "summary": "The other half of every transformer block: expand, bend, contract, applied to each token on its own.",
+    "status": "live"
+  },
+  {
+    "slug": "attention-is-all-you-need-paper",
+    "title": "Attention Is All You Need, the full paper",
+    "summary": "A section-by-section dissection of the 2017 paper: the full encoder-decoder architecture, cross-attention, training regime, and results.",
+    "status": "coming-soon"
+  }
+]

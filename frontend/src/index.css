@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg: #0b0e14;
+  --color-bg-raised: #11151f;
+  --color-border: #232838;
+  --color-text: #e7e9ee;
+  --color-text-muted: #9aa1b4;
+
+  --color-query: #5ec8f8;
+  --color-key: #f8b95e;
+  --color-value: #7ef2b0;
+  --color-attention: #ef5da8;
+  --color-position: #b98cf0;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-attention);
+  color: #0b0e14;
+}
+
+.markdown-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.markdown-body h2 {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body p {
+  margin-bottom: 1.25rem;
+}
+
+.markdown-body strong {
+  color: var(--color-text);
+}
+
+.markdown-body a {
+  color: var(--color-query);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}

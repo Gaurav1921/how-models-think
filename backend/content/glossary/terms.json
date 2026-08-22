@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "self-attention",
+    "term": "Self-attention",
+    "short_definition": "A mechanism where every token in a sequence looks at every other token (including itself) and decides how much to weigh each one when building its own updated representation.",
+    "read_more_href": "/transformers"
+  },
+  {
+    "slug": "feed-forward-network",
+    "term": "Feed-forward network",
+    "short_definition": "A small two-layer neural network applied independently to each token's vector after attention, expanding it to a larger dimension, applying a non-linearity, then projecting it back down.",
+    "read_more_href": "/explainers/feed-forward-networks"
+  },
+  {
+    "slug": "forward-propagation",
+    "term": "Forward propagation",
+    "short_definition": "Running input through a network's layers in order to produce an output, the normal direction data flows during prediction, as opposed to backpropagation, which runs error signals in reverse.",
+    "read_more_href": "/explainers/backpropagation"
+  },
+  {
+    "slug": "backpropagation",
+    "term": "Backpropagation",
+    "short_definition": "The algorithm that computes how much each weight in a network contributed to the final error, by applying the chain rule backward from the output layer to the input layer.",
+    "read_more_href": "/explainers/backpropagation"
+  },
+  {
+    "slug": "gradient-descent",
+    "term": "Gradient descent",
+    "short_definition": "The update rule that nudges each weight a small step in whichever direction would have reduced the error, repeated over many examples until the weights converge.",
+    "read_more_href": "/explainers/backpropagation"
+  },
+  {
+    "slug": "loss-function",
+    "term": "Loss function",
+    "short_definition": "A single number that measures how wrong a model's prediction was for one example, the quantity that training tries to minimize.",
+    "read_more_href": null
+  },
+  {
+    "slug": "softmax",
+    "term": "Softmax",
+    "short_definition": "A function that turns a list of raw scores into a probability distribution: every value becomes positive and the whole list sums to 1, with larger scores getting disproportionately more weight.",
+    "read_more_href": null
+  },
+  {
+    "slug": "logit",
+    "term": "Logit",
+    "short_definition": "A raw, unnormalized score a model assigns to a candidate output before softmax turns it into a probability.",
+    "read_more_href": null
+  },
+  {
+    "slug": "embedding",
+    "term": "Embedding",
+    "short_definition": "A learned, fixed-size vector of numbers that stands in for a token, positioned so that tokens with similar meaning end up with similar vectors.",
+    "read_more_href": "/transformers"
+  },
+  {
+    "slug": "recurrent-neural-network",
+    "term": "Recurrent neural network (RNN)",
+    "short_definition": "An older architecture that processes a sequence one token at a time, carrying a running hidden state forward, which makes it hard to parallelize and prone to forgetting distant tokens, the problem transformers were designed to solve.",
+    "read_more_href": "/explainers/rnn"
+  }
+]
