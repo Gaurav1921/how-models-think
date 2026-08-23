@@ -11,7 +11,7 @@ interface BlogPostCardProps {
 export function BlogPostCard({ post }: BlogPostCardProps) {
   return (
     <Link to={`/blog/${post.slug}`} className="block">
-      <Card as="article">
+      <Card as="article" interactive>
         <span className="font-mono text-xs text-[var(--color-text-muted)]">{post.date}</span>
         <h2 className="mt-1 font-medium">{post.title}</h2>
         <p className="mt-2 text-sm text-[var(--color-text-muted)]">{post.summary}</p>

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Figure } from "./Figure";
 import { useScrollStep } from "./useScrollStep";
+import { slugify } from "./slugify";
 
 interface ScrollSectionProps {
   index: number;
@@ -20,7 +21,7 @@ export function ScrollSection({ index, title, math, caption, steps, renderGraphi
   const { activeStep, registerStep } = useScrollStep(steps.length);
 
   return (
-    <section className="grid gap-8 py-16 lg:grid-cols-2 lg:items-start">
+    <section id={slugify(title)} className="grid scroll-mt-24 gap-8 py-16 lg:grid-cols-2 lg:items-start">
       <div className="lg:sticky lg:top-24">
         <div className="mb-4 flex items-baseline gap-3">
           <span className="font-mono text-sm text-[var(--color-text-muted)]">

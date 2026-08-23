@@ -1,7 +1,14 @@
 import { PageShell } from "../../components/layout/PageShell";
 import { ScrollSection } from "../../viz-core/ScrollSection";
+import { SectionNavRail } from "../../viz-core/SectionNavRail";
 import { ForwardBackwardDiagram } from "../../features/explainers/backpropagation/ForwardBackwardDiagram";
 import { LossDescentPlot } from "../../features/transformers/viz/LossDescentPlot";
+
+const SECTION_TITLES = [
+  "Forward propagation: making a guess",
+  "Backpropagation: assigning blame",
+  "Gradient descent: taking the step",
+];
 
 const FORWARD_STEPS = [
   "Forward propagation is just running the network: input goes through one layer, that layer's output goes through the next, and so on, until you get a prediction. This is the direction data flows every single time the model is used, training or not.",
@@ -22,6 +29,7 @@ const DESCENT_STEPS = [
 export function BackpropagationExplainer() {
   return (
     <PageShell wide>
+      <SectionNavRail titles={SECTION_TITLES} />
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">
           Backpropagation and gradient descent

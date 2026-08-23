@@ -5,7 +5,9 @@
     "year_label": "1958",
     "title": "The Perceptron",
     "summary": "Frank Rosenblatt's Perceptron was one of the first algorithms that could learn a linear decision boundary from labeled examples, rather than being explicitly programmed with rules.",
-    "tags": ["neural-networks", "history"]
+    "tags": ["neural-networks", "history"],
+    "image": "/timeline/perceptron-1958.png",
+    "image_credit": "John C. Hay and Albert E. Murray, Mark I Perceptron Operators' Manual, Public domain, Wikimedia Commons"
   },
   {
     "id": "eliza-1966",
@@ -21,7 +23,9 @@
     "year_label": "1986",
     "title": "Backpropagation popularized",
     "summary": "Rumelhart, Hinton, and Williams showed backpropagation could efficiently train multi-layer neural networks, giving the field a practical way to adjust every weight in a network based on its errors.",
-    "tags": ["training", "history"]
+    "tags": ["training", "history"],
+    "image": "/timeline/backprop-1986.svg",
+    "image_credit": "Sky99, CC BY-SA 3.0, Wikimedia Commons"
   },
   {
     "id": "svm-1995",
@@ -29,7 +33,9 @@
     "year_label": "1995",
     "title": "Support Vector Machines mature",
     "summary": "SVMs became a dominant approach for classification tasks through the 1990s and 2000s, relying on hand-engineered features rather than learned representations.",
-    "tags": ["classical-ml", "history"]
+    "tags": ["classical-ml", "history"],
+    "image": "/timeline/svm-1995.svg",
+    "image_credit": "ZackWeinberg, based on a PNG version by Cyc, CC BY-SA 3.0, Wikimedia Commons"
   },
   {
     "id": "alexnet-2012",
@@ -37,7 +43,9 @@
     "year_label": "2012",
     "title": "AlexNet",
     "summary": "A deep convolutional neural network trained on GPUs dramatically beat the previous state of the art on the ImageNet competition, kicking off the modern deep learning era.",
-    "tags": ["deep-learning", "computer-vision"]
+    "tags": ["deep-learning", "computer-vision"],
+    "image": "/timeline/alexnet-2012.jpg",
+    "image_credit": "TheStriker, CC BY-SA 4.0, Wikimedia Commons (EVGA GeForce GTX 580, the GPU model used to train AlexNet)"
   },
   {
     "id": "word2vec-2013",
@@ -61,7 +69,9 @@
     "year_label": "2017",
     "title": "Attention Is All You Need",
     "summary": "Vaswani et al. showed that attention alone, without recurrence or convolution, was enough to build state-of-the-art sequence models, and dramatically more parallelizable to train.",
-    "tags": ["transformers", "attention", "landmark-paper"]
+    "tags": ["transformers", "attention", "landmark-paper"],
+    "image": "/timeline/transformer-2017.png",
+    "image_credit": "dvgodoy, CC BY 4.0, Wikimedia Commons"
   },
   {
     "id": "bert-2018",

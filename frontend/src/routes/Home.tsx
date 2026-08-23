@@ -50,7 +50,7 @@ export function Home() {
       <section className="grid gap-4 py-8 sm:grid-cols-3">
         {cards.map((card) => (
           <Link key={card.to} to={card.to} className="block">
-            <Card as="article">
+            <Card as="article" interactive>
               <h2 className="font-medium">{card.title}</h2>
               <p className="mt-2 text-sm text-[var(--color-text-muted)]">{card.description}</p>
             </Card>
@@ -67,7 +67,7 @@ export function Home() {
             {foundations.map((explainer) =>
               explainer.status === "live" ? (
                 <Link key={explainer.slug} to={`/explainers/${explainer.slug}`} className="block">
-                  <Card as="article">
+                  <Card as="article" interactive>
                     <h3 className="font-medium">{explainer.title}</h3>
                     <p className="mt-2 text-sm text-[var(--color-text-muted)]">{explainer.summary}</p>
                   </Card>

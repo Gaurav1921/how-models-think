@@ -13,6 +13,10 @@ class TimelineEvent(BaseModel):
         title: Short name of the event, model, or paper.
         summary: One or two sentence explanation of why it matters.
         tags: Topic tags for filtering.
+        image: Root-relative path to an illustrative image, or None if
+            this entry has no image.
+        image_credit: Attribution string for the image, required whenever
+            image is set.
     """
 
     id: str
@@ -21,3 +25,5 @@ class TimelineEvent(BaseModel):
     title: str
     summary: str
     tags: list[str]
+    image: str | None = None
+    image_credit: str | None = None

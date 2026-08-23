@@ -1,5 +1,6 @@
 import { PageShell } from "../components/layout/PageShell";
 import { Term } from "../components/common/Term";
+import { SectionNavRail } from "../viz-core/SectionNavRail";
 import { IntroSection } from "../features/transformers/sections/IntroSection";
 import { TokenizationSection } from "../features/transformers/sections/TokenizationSection";
 import { EmbeddingSpaceSection } from "../features/transformers/sections/EmbeddingSpaceSection";
@@ -11,10 +12,24 @@ import { StackedLayersSection } from "../features/transformers/sections/StackedL
 import { OutputProjectionSection } from "../features/transformers/sections/OutputProjectionSection";
 import { TrainingSection } from "../features/transformers/sections/TrainingSection";
 
+const SECTION_TITLES = [
+  "Predicting the next token",
+  "Tokens and embeddings",
+  "Why embeddings alone aren't enough",
+  "Query, Key, Value",
+  "Scaled dot-product attention",
+  "Multi-head attention",
+  "Positional encoding",
+  "Stacking blocks",
+  "Back to a probability distribution",
+  "How these weights get learned",
+];
+
 /** The Transformers and Attention Is All You Need explainer page. */
 export function TransformersExplainer() {
   return (
     <PageShell wide>
+      <SectionNavRail titles={SECTION_TITLES} />
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">
           Transformers and Attention Is All You Need

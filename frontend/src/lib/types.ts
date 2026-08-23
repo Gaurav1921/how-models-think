@@ -19,6 +19,8 @@ export interface TimelineEvent {
   title: string;
   summary: string;
   tags: string[];
+  image: string | null;
+  image_credit: string | null;
 }
 
 export interface ExplainerMeta {

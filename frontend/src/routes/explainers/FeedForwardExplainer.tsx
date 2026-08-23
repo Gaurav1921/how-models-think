@@ -1,7 +1,10 @@
 import { PageShell } from "../../components/layout/PageShell";
 import { ScrollSection } from "../../viz-core/ScrollSection";
+import { SectionNavRail } from "../../viz-core/SectionNavRail";
 import { FeedForwardDiagram } from "../../features/explainers/feedforward/FeedForwardDiagram";
 import { ActivationCurve } from "../../features/explainers/feedforward/ActivationCurve";
+
+const SECTION_TITLES = ["Expand, then contract", "Why you need a non-linearity"];
 
 const SHAPE_STEPS = [
   "After attention mixes information across tokens, each token's vector is passed through a small two-layer network, the same weights reused at every position, but each token processed independently. Nothing mixes between tokens at this step, attention already did that part.",
@@ -18,6 +21,7 @@ const NONLINEARITY_STEPS = [
 export function FeedForwardExplainer() {
   return (
     <PageShell wide>
+      <SectionNavRail titles={SECTION_TITLES} />
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">Feed-forward networks</h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">

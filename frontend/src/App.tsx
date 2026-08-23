@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/layout/NavBar";
 import { Footer } from "./components/layout/Footer";
+import { ScrollProgressBar } from "./components/layout/ScrollProgressBar";
+import { ScrollToTop } from "./components/layout/ScrollToTop";
 import { Home } from "./routes/Home";
 import { About } from "./routes/About";
 import { Timeline } from "./routes/Timeline";
@@ -18,6 +20,8 @@ export function App() {
   return (
     <BrowserRouter>
       <GlossaryProvider>
+        <ScrollToTop />
+        <ScrollProgressBar />
         <div className="flex min-h-screen flex-col">
           <NavBar />
           <div className="flex-1">

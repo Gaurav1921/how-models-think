@@ -31,16 +31,16 @@ export function Timeline() {
         transformers, and today's large language models.
       </p>
 
-      <div className="mt-10 space-y-10">
+      <div className="mt-10 max-w-4xl">
         {state.status === "loading" && <LoadingState />}
         {state.status === "error" && <ErrorState />}
         {state.status === "success" &&
           groupByEra(state.data).map(([era, events]) => (
-            <section key={era}>
+            <section key={era} className="mb-10 last:mb-0">
               <h2 className="mb-4 text-sm font-medium tracking-wide text-[var(--color-text-muted)] uppercase">
                 {era}
               </h2>
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="relative border-l border-[var(--color-border)]">
                 {events.map((event) => (
                   <TimelineEraCard key={event.id} event={event} />
                 ))}

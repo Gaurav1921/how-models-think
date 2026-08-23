@@ -1,9 +1,12 @@
 import { PageShell } from "../../components/layout/PageShell";
 import { ScrollSection } from "../../viz-core/ScrollSection";
+import { SectionNavRail } from "../../viz-core/SectionNavRail";
 import { RNNChainDiagram } from "../../features/explainers/rnn/RNNChainDiagram";
 import { GradientDecayBars } from "../../features/explainers/rnn/GradientDecayBars";
 
 const TOKENS = ["The", "cat", "sat", "mat"];
+
+const SECTION_TITLES = ["One token at a time", "Vanishing gradients", "Why transformers replaced them"];
 
 const CHAIN_STEPS = [
   "A recurrent neural network (RNN) reads a sequence one token at a time. At each step it combines the new token with a hidden state, a running summary vector carried over from the previous step.",
@@ -27,6 +30,7 @@ const WHY_REPLACED_STEPS = [
 export function RNNExplainer() {
   return (
     <PageShell wide>
+      <SectionNavRail titles={SECTION_TITLES} />
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">Recurrent neural networks</h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">
