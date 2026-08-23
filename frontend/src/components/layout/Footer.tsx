@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const links = [
-  { to: "/transformers", label: "Transformers" },
+  { to: "/learn", label: "Learn" },
   { to: "/timeline", label: "Timeline" },
   { to: "/blog", label: "Blog" },
   { to: "/about", label: "About" },

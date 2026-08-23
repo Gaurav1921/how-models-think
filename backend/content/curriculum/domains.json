@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "machine-learning",
+    "title": "Machine Learning",
+    "summary": "Classical machine learning: regression, classification, and clustering, the ideas that came before deep learning.",
+    "status": "live",
+    "order": 1
+  },
+  {
+    "slug": "deep-learning",
+    "title": "Deep Learning",
+    "summary": "Neural networks from a single neuron up to the mechanisms every modern architecture is built from.",
+    "status": "live",
+    "order": 2
+  },
+  {
+    "slug": "nlp",
+    "title": "NLP",
+    "summary": "How text becomes something a network can actually compute on, starting with embeddings.",
+    "status": "live",
+    "order": 3
+  },
+  {
+    "slug": "transformers",
+    "title": "Transformers",
+    "summary": "Attention, multi-head attention, and the architecture behind every modern large language model.",
+    "status": "live",
+    "order": 4
+  }
+]

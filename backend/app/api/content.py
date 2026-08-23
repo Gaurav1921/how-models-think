@@ -3,6 +3,7 @@
 from fastapi import APIRouter
 
 from app.models.blog import BlogPost, BlogPostSummary
+from app.models.curriculum import CurriculumCategory, CurriculumDomain
 from app.models.explainer import ExplainerMeta
 from app.models.glossary import GlossaryTerm
 from app.models.timeline import TimelineEvent
@@ -66,3 +67,23 @@ def get_glossary_terms() -> list[GlossaryTerm]:
         explainer pages.
     """
     return content_loader.list_glossary_terms()
+
+
+@router.get("/curriculum/domains", response_model=list[CurriculumDomain])
+def get_curriculum_domains() -> list[CurriculumDomain]:
+    """Lists every curriculum domain for the Learn hub.
+
+    Returns:
+        All curriculum domains, in file order.
+    """
+    return content_loader.list_curriculum_domains()
+
+
+@router.get("/curriculum/categories", response_model=list[CurriculumCategory])
+def get_curriculum_categories() -> list[CurriculumCategory]:
+    """Lists every curriculum category for the Learn hub.
+
+    Returns:
+        All curriculum categories, in file order.
+    """
+    return content_loader.list_curriculum_categories()

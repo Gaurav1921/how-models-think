@@ -45,3 +45,17 @@ def test_list_glossary_terms_includes_self_attention():
     assert response.status_code == 200
     slugs = [item["slug"] for item in response.json()]
     assert "self-attention" in slugs
+
+
+def test_list_curriculum_domains_includes_deep_learning():
+    response = client.get("/api/curriculum/domains")
+    assert response.status_code == 200
+    slugs = [item["slug"] for item in response.json()]
+    assert "deep-learning" in slugs
+
+
+def test_list_curriculum_categories_includes_ann():
+    response = client.get("/api/curriculum/categories")
+    assert response.status_code == 200
+    slugs = [item["slug"] for item in response.json()]
+    assert "ann" in slugs

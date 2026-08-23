@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "ann",
+    "domain": "deep-learning",
+    "title": "ANN",
+    "order": 1
+  },
+  {
+    "slug": "rnn",
+    "domain": "deep-learning",
+    "title": "RNN",
+    "order": 2
+  },
+  {
+    "slug": "cnn",
+    "domain": "deep-learning",
+    "title": "CNN",
+    "order": 3
+  },
+  {
+    "slug": "regression",
+    "domain": "machine-learning",
+    "title": "Regression",
+    "order": 1
+  },
+  {
+    "slug": "classification",
+    "domain": "machine-learning",
+    "title": "Classification",
+    "order": 2
+  },
+  {
+    "slug": "clustering",
+    "domain": "machine-learning",
+    "title": "Clustering",
+    "order": 3
+  }
+]

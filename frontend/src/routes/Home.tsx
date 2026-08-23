@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "../components/layout/PageShell";
 import { Card } from "../components/common/Card";
-import { getExplainers } from "../lib/api";
-import { useApi } from "../lib/useApi";
 
 const cards = [
   {
-    to: "/transformers",
-    title: "Transformers and Attention Is All You Need",
+    to: "/learn",
+    title: "Learn",
     description:
-      "A visual, step-by-step walkthrough of how a transformer turns text into a prediction, from tokens to attention to the next word.",
+      "Work through transformers, deep learning fundamentals, and more, one topic at a time, each one building on the last.",
   },
   {
     to: "/timeline",
@@ -27,12 +25,6 @@ const cards = [
 
 /** The site's homepage. */
 export function Home() {
-  const explainersState = useApi(getExplainers);
-  const foundations =
-    explainersState.status === "success"
-      ? explainersState.data.filter((explainer) => explainer.slug !== "transformers")
-      : [];
-
   return (
     <PageShell wide>
       <section className="py-8">
@@ -49,7 +41,7 @@ export function Home() {
 
       <section className="grid gap-4 py-8 sm:grid-cols-3">
         {cards.map((card) => (
-          <Link key={card.to} to={card.to} className="block">
+          <Link key={card.to} to={card.to} className="block h-full">
             <Card as="article" interactive>
               <h2 className="font-medium">{card.title}</h2>
               <p className="mt-2 text-sm text-[var(--color-text-muted)]">{card.description}</p>
@@ -57,36 +49,6 @@ export function Home() {
           </Link>
         ))}
       </section>
-
-      {foundations.length > 0 && (
-        <section className="py-8">
-          <h2 className="mb-4 text-sm font-medium tracking-wide text-[var(--color-text-muted)] uppercase">
-            Foundations
-          </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {foundations.map((explainer) =>
-              explainer.status === "live" ? (
-                <Link key={explainer.slug} to={`/explainers/${explainer.slug}`} className="block">
-                  <Card as="article" interactive>
-                    <h3 className="font-medium">{explainer.title}</h3>
-                    <p className="mt-2 text-sm text-[var(--color-text-muted)]">{explainer.summary}</p>
-                  </Card>
-                </Link>
-              ) : (
-                <Card as="article" key={explainer.slug}>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-medium text-[var(--color-text-muted)]">{explainer.title}</h3>
-                    <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 font-mono text-[10px] text-[var(--color-text-muted)]">
-                      coming soon
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm text-[var(--color-text-muted)]">{explainer.summary}</p>
-                </Card>
-              ),
-            )}
-          </div>
-        </section>
-      )}
     </PageShell>
   );
 }

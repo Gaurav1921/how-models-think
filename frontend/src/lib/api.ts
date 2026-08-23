@@ -1,4 +1,12 @@
-import type { BlogPost, BlogPostSummary, ExplainerMeta, GlossaryTerm, TimelineEvent } from "./types";
+import type {
+  BlogPost,
+  BlogPostSummary,
+  CurriculumCategory,
+  CurriculumDomain,
+  ExplainerMeta,
+  GlossaryTerm,
+  TimelineEvent,
+} from "./types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
 
@@ -28,4 +36,12 @@ export function getExplainers(): Promise<ExplainerMeta[]> {
 
 export function getGlossaryTerms(): Promise<GlossaryTerm[]> {
   return getJson("/api/glossary/terms");
+}
+
+export function getCurriculumDomains(): Promise<CurriculumDomain[]> {
+  return getJson("/api/curriculum/domains");
+}
+
+export function getCurriculumCategories(): Promise<CurriculumCategory[]> {
+  return getJson("/api/curriculum/categories");
 }

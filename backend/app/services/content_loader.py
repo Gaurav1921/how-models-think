@@ -13,6 +13,7 @@ from fastapi import HTTPException
 
 from app.core.config import settings
 from app.models.blog import BlogPost, BlogPostSummary
+from app.models.curriculum import CurriculumCategory, CurriculumDomain
 from app.models.explainer import ExplainerMeta
 from app.models.glossary import GlossaryTerm
 from app.models.timeline import TimelineEvent
@@ -72,6 +73,20 @@ def _load_glossary_terms() -> list[GlossaryTerm]:
     return [GlossaryTerm(**entry) for entry in raw]
 
 
+@lru_cache
+def _load_curriculum_domains() -> list[CurriculumDomain]:
+    path = settings.content_dir / "curriculum" / "domains.json"
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return [CurriculumDomain(**entry) for entry in raw]
+
+
+@lru_cache
+def _load_curriculum_categories() -> list[CurriculumCategory]:
+    path = settings.content_dir / "curriculum" / "categories.json"
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return [CurriculumCategory(**entry) for entry in raw]
+
+
 def list_blog_posts() -> list[BlogPostSummary]:
     """Returns summaries for every blog post, newest first.
 
@@ -129,6 +144,24 @@ def list_glossary_terms() -> list[GlossaryTerm]:
         All glossary terms, in file order.
     """
     return _load_glossary_terms()
+
+
+def list_curriculum_domains() -> list[CurriculumDomain]:
+    """Returns every curriculum domain for the Learn hub.
+
+    Returns:
+        All curriculum domains, in file order.
+    """
+    return _load_curriculum_domains()
+
+
+def list_curriculum_categories() -> list[CurriculumCategory]:
+    """Returns every curriculum category for the Learn hub.
+
+    Returns:
+        All curriculum categories, in file order.
+    """
+    return _load_curriculum_categories()
 
 
 def content_dir_exists() -> bool:

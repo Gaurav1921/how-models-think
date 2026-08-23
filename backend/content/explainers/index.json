@@ -1,32 +1,98 @@
 [
   {
     "slug": "transformers",
-    "title": "Transformers and Attention Is All You Need",
+    "title": "Transformers",
     "summary": "A visual, step-by-step walkthrough of how a transformer turns text into a prediction, from tokens to attention to the next word.",
-    "status": "live"
-  },
-  {
-    "slug": "rnn",
-    "title": "Recurrent neural networks",
-    "summary": "How models processed sequences before transformers, one token at a time, and why that stopped scaling.",
-    "status": "live"
-  },
-  {
-    "slug": "backpropagation",
-    "title": "Backpropagation and gradient descent",
-    "summary": "How a network turns a wrong guess into a slightly better set of weights, one training step at a time.",
-    "status": "live"
-  },
-  {
-    "slug": "feed-forward-networks",
-    "title": "Feed-forward networks",
-    "summary": "The other half of every transformer block: expand, bend, contract, applied to each token on its own.",
-    "status": "live"
+    "status": "live",
+    "domain": "transformers",
+    "order": 1
   },
   {
     "slug": "attention-is-all-you-need-paper",
     "title": "Attention Is All You Need, the full paper",
     "summary": "A section-by-section dissection of the 2017 paper: the full encoder-decoder architecture, cross-attention, training regime, and results.",
-    "status": "coming-soon"
+    "status": "coming-soon",
+    "domain": "transformers",
+    "order": 2
+  },
+  {
+    "slug": "deep-learning-basics",
+    "title": "Basics of deep learning",
+    "summary": "Why deep learning works: stacking simple functions to approximate anything, and what that actually buys you over hand-written rules.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "ann",
+    "order": 1
+  },
+  {
+    "slug": "perceptron",
+    "title": "The Perceptron",
+    "summary": "The single-neuron model that started it all: a weighted sum, a threshold, and a straight line through your data.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "ann",
+    "order": 2
+  },
+  {
+    "slug": "backpropagation",
+    "title": "Forward & backward propagation",
+    "summary": "How a network turns a wrong guess into a slightly better set of weights, one training step at a time.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "ann",
+    "order": 3
+  },
+  {
+    "slug": "feed-forward-networks",
+    "title": "Feed-forward networks & activation functions",
+    "summary": "The expand, bend, contract pattern behind every dense layer, and why the bend (the non-linearity) is what makes it work.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "ann",
+    "order": 4
+  },
+  {
+    "slug": "optimizers",
+    "title": "Optimizers",
+    "summary": "Beyond plain gradient descent: momentum, Adam, and how modern training actually takes each step.",
+    "status": "coming-soon",
+    "domain": "deep-learning",
+    "category": "ann",
+    "order": 5
+  },
+  {
+    "slug": "embeddings",
+    "title": "Embeddings",
+    "summary": "How text becomes a vector before any network, RNN or otherwise, can compute on it.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "rnn",
+    "order": 1
+  },
+  {
+    "slug": "rnn",
+    "title": "Recurrent neural networks",
+    "summary": "How models processed sequences before transformers, one token at a time, and why that stopped scaling.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "rnn",
+    "order": 2
+  },
+  {
+    "slug": "lstm",
+    "title": "LSTM",
+    "summary": "The gated version of an RNN, built specifically to fight the vanishing gradient problem.",
+    "status": "coming-soon",
+    "domain": "deep-learning",
+    "category": "rnn",
+    "order": 3
+  },
+  {
+    "slug": "embeddings",
+    "title": "Embeddings",
+    "summary": "How text becomes a vector before any network can compute on it: the first step behind every NLP architecture, RNNs included.",
+    "status": "live",
+    "domain": "nlp",
+    "order": 1
   }
 ]

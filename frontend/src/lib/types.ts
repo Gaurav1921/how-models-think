@@ -28,6 +28,9 @@ export interface ExplainerMeta {
   title: string;
   summary: string;
   status: "live" | "coming-soon";
+  domain: string | null;
+  category: string | null;
+  order: number | null;
 }
 
 export interface GlossaryTerm {
@@ -35,4 +38,19 @@ export interface GlossaryTerm {
   term: string;
   short_definition: string;
   read_more_href: string | null;
+}
+
+export interface CurriculumDomain {
+  slug: string;
+  title: string;
+  summary: string;
+  status: "live" | "coming-soon";
+  order: number;
+}
+
+export interface CurriculumCategory {
+  slug: string;
+  domain: string;
+  title: string;
+  order: number;
 }
