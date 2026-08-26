@@ -25,7 +25,7 @@ const GRADIENT_STEPS = [
 const WHY_REPLACED_STEPS = [
   "Self-attention lets every token look directly at every other token in a single step, regardless of how far apart they are. No chain of hidden states in between, no information bottleneck.",
   "Because there's no step-by-step dependency, every token's attention can be computed in parallel on a GPU. That parallelism, more than anything else, is what made training today's large models feasible.",
-  "The tradeoff: attention over a sequence of length n costs O(n^2) since every token compares against every other token, which scales worse than an RNN's O(n) for very long sequences. Both approaches have limits, just different ones.",
+  "The tradeoff: attention over a sequence of length n costs O(n^2), since every token compares against every other token, versus O(n) for an RNN, which only ever compares a token against the single running hidden state before it. For very long sequences that quadratic cost adds up. Both approaches have limits, just different ones.",
 ];
 
 /** Explainer page: recurrent neural networks, and why transformers replaced them. */
@@ -59,7 +59,7 @@ export function RNNExplainer() {
         math="\frac{\partial L}{\partial h_1} = \frac{\partial L}{\partial h_T} \cdot \frac{\partial h_T}{\partial h_{T-1}} \cdots \frac{\partial h_2}{\partial h_1}"
         steps={GRADIENT_STEPS}
         renderGraphic={(activeStep) => (
-          <GradientDecayBars stepCount={6} decayFactor={activeStep === 0 ? 0.85 : 0.55} />
+          <GradientDecayBars stepCount={6} decayFactor={[0.75, 0.55, 0.88][activeStep]} />
         )}
       />
 

@@ -15,7 +15,7 @@ const SECTION_TITLES = [
 
 const TAXONOMY_STEPS = [
   "Artificial Intelligence is the broadest term: an application that performs a task on its own, without a human specifying every step, by learning from data instead. Machine Learning is a subset of that, statistical tools and algorithms for prediction, forecasting, and clustering.",
-  "Deep Learning is a subset of Machine Learning, specifically the multi-layered neural networks this whole domain covers. The research dates back to 1958, but it only became mainstream in the last decade, driven by two things arriving together: an explosion of available data, and GPU hardware that makes training large networks practical.",
+  "Deep Learning is a subset of Machine Learning, specifically the multi-layered neural networks this whole domain covers. Neural networks trace back to the single-neuron Perceptron in 1958, but \"deep\" (many-layer) learning didn't become practical until backpropagation matured in the 1980s, and didn't become mainstream until the last decade or so, driven by two things arriving together: an explosion of available data, and GPU hardware that makes training large networks affordable.",
   "Data Science doesn't nest neatly inside this picture. A data scientist's work touches AI, ML, or DL depending on the task, sometimes it's building a predictive model, sometimes training a deep network, sometimes just cleaning and analyzing data. The tool changes; the goal, shipping something useful from data, doesn't.",
 ];
 

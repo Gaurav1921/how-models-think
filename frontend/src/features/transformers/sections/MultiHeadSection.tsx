@@ -4,13 +4,13 @@ import { ScrollSection } from "../../../viz-core/ScrollSection";
 
 const STEPS = [
   "A single attention head has to average over everything it looks at, which the paper's authors point out inhibits capturing more than one kind of relationship at a time. Running several heads in parallel, each with its own learned projections, lets the model jointly attend to different representation subspaces at once.",
-  "Each head has its own learned Query, Key, and Value matrices, so each one can end up focused on something different: nearby words, subject-verb pairs, sentence position. The original paper uses 8 heads, each working in a 64-dimensional subspace of the model's 512 dimensions. The four below are simplified stand-ins so the different patterns are easy to see; a real trained head rarely looks this clean.",
+  "Each head has its own learned Query, Key, and Value matrices, so each one can end up focused on something different: nearby words, subject-verb pairs, sentence position. The original paper uses 8 heads, each working in a 64-dimensional subspace of the model's 512 dimensions. The four below are simplified stand-ins so the different patterns are easy to see, shortened to \"The cat sat mat\" so a 4x4 grid fits cleanly; a real trained head rarely looks this clean.",
   "The outputs of every head are concatenated back together and passed through one more learned matrix, W_O, mixing what each head found into a single vector per token. Nothing forces a head to specialize this way, it falls out of training because different patterns each help minimize the loss, and researchers have found this kind of specialization by inspecting real trained models.",
 ];
 
 const HEAD_PATTERNS = [
   "self-focused: each token attends mostly to itself",
-  "fixed-token: every row leans on \"cat\", regardless of which token is asking",
+  "fixed-token: once a row has more than just itself to look at, it leans on \"cat\" regardless of which token is asking (the first token, \"The\", is causally masked down to only itself, so it can't yet)",
   "broad context: attention spreads roughly evenly across every earlier token",
   "recency: every row leans on the most recent token it's allowed to see",
 ];

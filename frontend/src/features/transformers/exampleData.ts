@@ -1,9 +1,12 @@
-import { maskFuturePositions, softmaxMatrix } from "./math";
+import { maskFuturePositions, softmaxMatrix, softmaxRow } from "./math";
 
 export const SENTENCE_TOKENS = ["The", "cat", "sat", "on", "the", "mat"];
 
 export const NEXT_TOKEN_CANDIDATES = ["mat", "floor", "chair", "roof", "moon"];
-export const NEXT_TOKEN_PROBABILITIES = [0.62, 0.18, 0.09, 0.06, 0.05];
+/** Illustrative, hand-picked raw logits (not from a real model). */
+export const NEXT_TOKEN_LOGITS = [4.1, 2.6, 1.9, 1.5, 1.4];
+export const NEXT_TOKEN_LOGITS_DISPLAY = NEXT_TOKEN_LOGITS.map((value) => value / Math.max(...NEXT_TOKEN_LOGITS));
+export const NEXT_TOKEN_PROBABILITIES = softmaxRow(NEXT_TOKEN_LOGITS);
 
 export const D_K = 8;
 const SCALE_FACTOR = 1 / Math.sqrt(D_K);

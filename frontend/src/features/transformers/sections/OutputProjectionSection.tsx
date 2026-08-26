@@ -1,9 +1,7 @@
-import { NEXT_TOKEN_CANDIDATES, NEXT_TOKEN_PROBABILITIES } from "../exampleData";
+import { NEXT_TOKEN_CANDIDATES, NEXT_TOKEN_LOGITS_DISPLAY, NEXT_TOKEN_PROBABILITIES } from "../exampleData";
 import { AttentionRowBars } from "../viz/AttentionRowBars";
 import { ScrollSection } from "../../../viz-core/ScrollSection";
 import { Term } from "../../../components/common/Term";
-
-const RAW_LOGITS = [4.1, 2.6, 1.9, 1.5, 1.4].map((value) => value / 4.1);
 
 const STEPS = [
   <>
@@ -36,7 +34,7 @@ export function OutputProjectionSection() {
       renderGraphic={(activeStep) => (
         <AttentionRowBars
           tokens={NEXT_TOKEN_CANDIDATES}
-          values={activeStep < 2 ? RAW_LOGITS : NEXT_TOKEN_PROBABILITIES}
+          values={activeStep < 2 ? NEXT_TOKEN_LOGITS_DISPLAY : NEXT_TOKEN_PROBABILITIES}
           label={activeStep < 2 ? "logits (relative scale)" : "softmax probabilities"}
         />
       )}

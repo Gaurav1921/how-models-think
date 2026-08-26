@@ -6,11 +6,19 @@ import { ScrollEnd } from "../../viz-core/ScrollEnd";
 import { Term } from "../../components/common/Term";
 import { ActivationExplorer } from "../../features/explainers/activation-functions/ActivationExplorer";
 
+const SOFTMAX_SCORES = [2.0, 1.0, 0.1, -1.0];
+
+function softmax(scores: number[]): number[] {
+  const exponentials = scores.map((score) => Math.exp(score));
+  const total = exponentials.reduce((sum, value) => sum + value, 0);
+  return exponentials.map((value) => value / total);
+}
+
 const SECTION_TITLES = [
   "Why you need a non-linearity",
   "Sigmoid and tanh: smooth, but they saturate",
   "The ReLU family",
-  "Swish",
+  "Swish and GELU",
   "Choosing one",
 ];
 
@@ -32,6 +40,7 @@ const RELU_STEPS = [
 const SWISH_STEPS = [
   "Swish multiplies the input by its own sigmoid, self-gating: sigmoid(x) acts as a gate between 0 and 1 that decides how much of x to let through, using the input itself to control the gate rather than a separate signal.",
   "Unlike ReLU, Swish is smooth everywhere and dips slightly below zero just left of the origin instead of flattening completely, which keeps a small gradient alive for mildly negative inputs. It performs competitively with ReLU on deep networks, at extra computational cost.",
+  "GELU (Gaussian Error Linear Unit) is built the same way, weighting the input by roughly how likely it is to be \"kept\" under a standard normal distribution, rather than by its own sigmoid. It behaves almost identically to Swish, smooth, non-monotonic, a small negative dip, and it's the activation most modern LLMs actually use inside their feed-forward blocks, including the one on this site's transformer page.",
 ];
 
 const CHOOSING_STEPS = [
@@ -46,6 +55,7 @@ const COMPARISON_ROWS = [
   { name: "Leaky ReLU / PReLU", range: "-infinity to infinity", strength: "Fixes dead neurons with a small negative slope", weakness: "Extra hyperparameter (or learned parameter)" },
   { name: "ELU", range: "-alpha to infinity", strength: "Smooth negative side; closer to zero-centered", weakness: "More expensive to compute than ReLU" },
   { name: "Swish", range: "≈ -0.28 to infinity", strength: "Smooth everywhere; competitive with ReLU", weakness: "More expensive to compute (uses sigmoid)" },
+  { name: "GELU", range: "≈ -0.17 to infinity", strength: "Smooth, probabilistic weighting; the default in most modern LLMs", weakness: "More expensive to compute than ReLU" },
   { name: "Softmax", range: "0 to 1, sums to 1", strength: "Turns raw scores into class probabilities", weakness: "Output layer only, multi-class problems" },
 ];
 
@@ -89,9 +99,9 @@ export function ActivationFunctionsExplainer() {
 
       <ScrollSection
         index={4}
-        title="Swish"
+        title="Swish and GELU"
         steps={SWISH_STEPS}
-        renderGraphic={() => <ActivationExplorer visible={["swish"]} />}
+        renderGraphic={(activeStep) => <ActivationExplorer visible={activeStep < 2 ? ["swish"] : ["swish", "gelu"]} />}
       />
 
       <ScrollSection
@@ -141,18 +151,13 @@ export function ActivationFunctionsExplainer() {
           divides by the total:
         </p>
         <div className="mt-4 flex flex-wrap gap-3 font-mono text-sm">
-          {[
-            { label: "2.0", value: "0.64" },
-            { label: "1.0", value: "0.24" },
-            { label: "0.1", value: "0.10" },
-            { label: "-1.0", value: "0.02" },
-          ].map((row) => (
+          {softmax(SOFTMAX_SCORES).map((probability, index) => (
             <div
-              key={row.label}
+              key={SOFTMAX_SCORES[index]}
               className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-raised)] px-3 py-2"
             >
-              <span className="text-[var(--color-text-muted)]">{row.label} -&gt; </span>
-              <span style={{ color: "var(--color-attention)" }}>{row.value}</span>
+              <span className="text-[var(--color-text-muted)]">{SOFTMAX_SCORES[index].toFixed(1)} -&gt; </span>
+              <span style={{ color: "var(--color-attention)" }}>{probability.toFixed(2)}</span>
             </div>
           ))}
         </div>

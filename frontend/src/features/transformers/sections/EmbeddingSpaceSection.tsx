@@ -3,9 +3,9 @@ import { EmbeddingCloud3D } from "../viz/EmbeddingCloud3D";
 import { ScrollSection } from "../../../viz-core/ScrollSection";
 
 const STEPS = [
-  '"river bank" and "bank account" both contain the token "bank". Its starting embedding is identical in both sentences.',
-  "But the two sentences clearly need different meanings for that word. A static, one-size-fits-all vector cannot capture that by itself.",
-  "What the model needs is a way to let each token's vector shift based on the tokens around it, pulled toward whichever meaning the context supports.",
+  '"river bank" and "savings bank" both contain the token "bank". Its starting embedding is identical in both phrases.',
+  "But the two phrases clearly need different meanings for that word. A static, one-size-fits-all vector cannot capture that by itself.",
+  "What the model needs is a way to let each token's vector shift based on the tokens before it, pulled toward whichever meaning the earlier context supports. (Both examples here put the disambiguating word first, on purpose: a decoder can only look backward, never forward, as the next section covers.)",
 ];
 
 /** Section 3: motivating attention by showing why static embeddings aren't enough. */
@@ -24,7 +24,7 @@ export function EmbeddingSpaceSection() {
               stage={activeStep === 0 ? "chips" : "vectors"}
             />
             <TokenFlowDiagram
-              tokens={["bank", "account"]}
+              tokens={["savings", "bank"]}
               stage={activeStep === 0 ? "chips" : "vectors"}
             />
           </div>

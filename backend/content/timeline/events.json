@@ -222,7 +222,7 @@
     "era": "Agentic and reasoning models",
     "year_label": "2025",
     "title": "DeepSeek-R1",
-    "summary": "DeepSeek released R1, an open-weights reasoning model trained largely with reinforcement learning, that matched OpenAI's o1 on several benchmarks at a fraction of the reported training cost and showed its full chain of reasoning to users.",
+    "summary": "DeepSeek released R1, an open-weights reasoning model trained largely with reinforcement learning on top of the DeepSeek-V3 base model (itself reportedly pretrained for around $5.6 million), that matched OpenAI's o1 on several benchmarks and showed its full chain of reasoning to users. R1's own additional training cost was never separately disclosed.",
     "tags": ["reasoning", "open-weights", "rlhf"]
   },
   {

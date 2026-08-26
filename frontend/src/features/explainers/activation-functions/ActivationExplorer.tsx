@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { line as d3Line, scaleLinear } from "d3";
 import { vizColors } from "../../../viz-core/colors";
-import { elu, leakyRelu, relu, sigmoid, swish, tanh, type ActivationFn } from "./activationMath";
+import { elu, gelu, leakyRelu, relu, sigmoid, swish, tanh, type ActivationFn } from "./activationMath";
 
 const WIDTH = 480;
 const HEIGHT = 260;
@@ -16,6 +16,7 @@ const FUNCTIONS: ActivationFn[] = [
   { slug: "leaky-relu", label: "Leaky ReLU", color: vizColors.attention, fn: (x) => leakyRelu(x) },
   { slug: "elu", label: "ELU", color: vizColors.value, fn: (x) => elu(x) },
   { slug: "swish", label: "Swish", color: "#facc15", fn: swish },
+  { slug: "gelu", label: "GELU", color: "#2dd4bf", fn: gelu },
 ];
 
 const xs = Array.from(

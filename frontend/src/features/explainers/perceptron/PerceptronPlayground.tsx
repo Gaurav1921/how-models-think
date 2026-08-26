@@ -36,7 +36,8 @@ export function PerceptronPlayground() {
 
   const w1 = normal.x;
   const w2 = normal.y;
-  const bias = -offset - (normal.x * -CENTER.x + normal.y * -CENTER.y);
+  // side(point) = w1*x + w2*y + bias, so bias must absorb the -CENTER shift and -offset together.
+  const bias = -normal.x * CENTER.x - normal.y * CENTER.y - offset;
 
   const correctCount = POINTS.filter((point) => (side(point) >= 0 ? 1 : 0) === point.classIndex).length;
 

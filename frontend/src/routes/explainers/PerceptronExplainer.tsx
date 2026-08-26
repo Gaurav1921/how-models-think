@@ -11,7 +11,7 @@ const SECTION_TITLES = ["A single artificial neuron", "A straight line through y
 const NEURON_STEPS = [
   "The Perceptron, introduced by Frank Rosenblatt in 1958, is the simplest possible model of a neuron: take a set of inputs, multiply each by a weight, add them up, and add one more number called a bias.",
   "Then check whether that sum clears a threshold. If it does, the perceptron fires and outputs 1. If not, it stays silent and outputs 0. That's the entire model: a weighted vote, thresholded.",
-  "Why bias matters: if every weight starts at 0, every weighted input is 0 too, no matter what the input is. The bias term exists specifically so the neuron's output isn't forced to 0 at the very start, which is what lets training actually begin.",
+  "Why bias matters: without it, the weighted sum is always 0 whenever every input is 0, which forces the decision boundary to pass through the origin. The bias shifts that line freely, so it can separate classes that don't happen to straddle the origin, a real geometric limitation, not just a training nicety.",
 ];
 
 const LINE_STEPS = [

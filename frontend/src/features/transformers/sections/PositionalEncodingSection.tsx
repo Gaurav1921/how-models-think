@@ -23,7 +23,8 @@ export function PositionalEncodingSection() {
         if (activeStep < 3) return <PositionalWavePlot />;
         const embedding = hashTokenToVector("cat", 8);
         const positional = positionalEncodingVector(1, 8);
-        const summed = embedding.map((value, index) => (value + positional[index]) / 2);
+        const scaledEmbedding = embedding.map((value) => value * Math.sqrt(embedding.length));
+        const summed = scaledEmbedding.map((value, index) => value + positional[index]);
         return (
           <div className="flex flex-col gap-3">
             <span className="text-xs text-[var(--color-text-muted)]">token "cat" at position 1</span>

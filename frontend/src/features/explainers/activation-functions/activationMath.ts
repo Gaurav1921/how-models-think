@@ -29,6 +29,10 @@ export function swish(x: number): number {
   return x * sigmoid(x);
 }
 
+export function gelu(x: number): number {
+  return 0.5 * x * (1 + Math.tanh(Math.sqrt(2 / Math.PI) * (x + 0.044715 * x ** 3)));
+}
+
 export interface ActivationFn {
   slug: string;
   label: string;
