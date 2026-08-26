@@ -38,18 +38,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     location: "Mumbai, Maharashtra, India",
     description:
       "Designed a custom Levenshtein distance algorithm for character-to-character OCR accuracy scoring against manually typed text, incorporating weighted character and symbol mismatches. Processed unstructured PDF and image data into accuracy metrics and optimal OCR settings recommendations.",
-  },
-  {
-    org: "SIGMA, The Business Club of NITT",
-    role: "Head, Data Science & Treasurer",
-    dateRange: "April 2023 - May 2024",
-    location: "Tiruchirappalli, Tamil Nadu, India",
-  },
-  {
-    org: "Chegg India",
-    role: "Subject Matter Expert, Statistics",
-    dateRange: "October 2021 - March 2024",
-    logo: "/about/logos/chegg.svg",
+    logo: "/about/logos/intemo.jpg",
   },
   {
     org: "National Institute of Technology, Tiruchirappalli",
@@ -67,14 +56,6 @@ export const EXPERIENCE: ExperienceEntry[] = [
     description:
       "Wrote 15 published articles on Python, web development, operating systems, and sentiment analysis for the Code Studio Resource Vertical.",
     logo: "/about/logos/coding-ninjas.svg",
-  },
-  {
-    org: "DataByte",
-    role: "Machine Learning Researcher",
-    dateRange: "November 2022 - April 2023",
-    location: "Tiruchirappalli, Tamil Nadu, India",
-    description:
-      "Studied how missing-value engineering affects model performance. Ran a data science workshop for 146 students.",
   },
   {
     org: "ESCP Business School",
@@ -101,6 +82,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     location: "California, United States",
     description:
       "A 5-week introductory Python course based on the first half of Stanford's CS106A. Built a closing project, a \"Who Wants to Be a Millionaire?\" game, later hosted on Stanford's own site.",
+    logo: "/about/logos/stanford.svg",
   },
 ];
 
