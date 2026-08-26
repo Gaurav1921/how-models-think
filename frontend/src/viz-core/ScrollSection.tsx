@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Figure } from "./Figure";
 import { useScrollStep } from "./useScrollStep";
 import { slugify } from "./slugify";
+import { Math } from "./Math";
 
 interface ScrollSectionProps {
   index: number;
@@ -31,9 +32,9 @@ export function ScrollSection({ index, title, math, caption, steps, renderGraphi
         </div>
         <Figure caption={caption}>{renderGraphic(activeStep)}</Figure>
         {math && (
-          <p className="mt-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-raised)] px-4 py-2 font-mono text-sm text-[var(--color-text-muted)]">
-            {math}
-          </p>
+          <div className="mt-3 overflow-x-auto rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-raised)] px-4 py-3 text-[var(--color-text)]">
+            <Math tex={math} block />
+          </div>
         )}
       </div>
 

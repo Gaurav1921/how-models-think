@@ -13,7 +13,7 @@ export function useScrollStep(stepCount: number) {
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    observerRef.current = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((entry) => entry.isIntersecting);
         if (visible.length === 0) return;
@@ -25,7 +25,14 @@ export function useScrollStep(stepCount: number) {
       },
       { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
     );
-    return () => observerRef.current?.disconnect();
+    observerRef.current = observer;
+    // Ref callbacks run during commit, before this effect, so any step
+    // already registered by then was skipped (no observer existed yet).
+    // Observe them now so the very first render isn't left unobserved.
+    for (const node of stepNodes.current) {
+      if (node) observer.observe(node);
+    }
+    return () => observer.disconnect();
   }, []);
 
   const registerStep = useCallback(

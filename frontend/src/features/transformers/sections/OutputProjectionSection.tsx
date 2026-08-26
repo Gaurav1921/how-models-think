@@ -31,7 +31,7 @@ export function OutputProjectionSection() {
     <ScrollSection
       index={9}
       title="Back to a probability distribution"
-      math="logits = h_final E^T,  P = softmax(logits)"
+      math="\text{logits} = h_{\text{final}}\, E^T, \qquad P = \text{softmax}(\text{logits})"
       steps={STEPS}
       renderGraphic={(activeStep) => (
         <AttentionRowBars

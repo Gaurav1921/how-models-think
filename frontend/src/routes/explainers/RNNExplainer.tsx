@@ -1,6 +1,8 @@
 import { PageShell } from "../../components/layout/PageShell";
+import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
 import { SectionNavRail } from "../../viz-core/SectionNavRail";
+import { ScrollEnd } from "../../viz-core/ScrollEnd";
 import { RNNChainDiagram } from "../../features/explainers/rnn/RNNChainDiagram";
 import { GradientDecayBars } from "../../features/explainers/rnn/GradientDecayBars";
 
@@ -31,6 +33,9 @@ export function RNNExplainer() {
   return (
     <PageShell wide>
       <SectionNavRail titles={SECTION_TITLES} />
+      <div className="pt-8">
+        <BackLink to="/learn/deep-learning" label="Deep Learning" />
+      </div>
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">Recurrent neural networks</h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">
@@ -43,7 +48,7 @@ export function RNNExplainer() {
       <ScrollSection
         index={1}
         title="One token at a time"
-        math="h_t = f(W_h h_(t-1) + W_x x_t)"
+        math="h_t = f(W_h h_{t-1} + W_x x_t)"
         steps={CHAIN_STEPS}
         renderGraphic={(activeStep) => <RNNChainDiagram tokens={TOKENS} activeIndex={activeStep + 1} />}
       />
@@ -51,7 +56,7 @@ export function RNNExplainer() {
       <ScrollSection
         index={2}
         title="Vanishing gradients"
-        math="dL/dh_1 = dL/dh_T * (dh_T/dh_(T-1)) * ... * (dh_2/dh_1)"
+        math="\frac{\partial L}{\partial h_1} = \frac{\partial L}{\partial h_T} \cdot \frac{\partial h_T}{\partial h_{T-1}} \cdots \frac{\partial h_2}{\partial h_1}"
         steps={GRADIENT_STEPS}
         renderGraphic={(activeStep) => (
           <GradientDecayBars stepCount={6} decayFactor={activeStep === 0 ? 0.85 : 0.55} />
@@ -71,6 +76,7 @@ export function RNNExplainer() {
           </div>
         )}
       />
+      <ScrollEnd />
     </PageShell>
   );
 }

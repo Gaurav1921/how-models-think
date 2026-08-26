@@ -35,7 +35,7 @@ export function MultiHeadSection() {
     <ScrollSection
       index={6}
       title="Multi-head attention"
-      math="MultiHead(Q, K, V) = Concat(head_1, ..., head_h) W_O"
+      math="\text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)\, W_O"
       steps={STEPS}
       renderGraphic={(activeStep) => {
         if (activeStep === 0) return <HeadsGrid count={1} />;

@@ -16,7 +16,7 @@ export function TokenizationSection() {
     <ScrollSection
       index={2}
       title="Tokens and embeddings"
-      math="x_i = E[token_i]"
+      math="x_i = E[\text{token}_i]"
       steps={STEPS}
       renderGraphic={(activeStep) => (
         <TokenFlowDiagram tokens={SENTENCE_TOKENS} stage={STAGES[activeStep]} />

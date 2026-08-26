@@ -1,6 +1,8 @@
 import { PageShell } from "../../components/layout/PageShell";
+import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
 import { SectionNavRail } from "../../viz-core/SectionNavRail";
+import { ScrollEnd } from "../../viz-core/ScrollEnd";
 import { FeedForwardDiagram } from "../../features/explainers/feedforward/FeedForwardDiagram";
 import { ActivationCurve } from "../../features/explainers/feedforward/ActivationCurve";
 
@@ -22,6 +24,9 @@ export function FeedForwardExplainer() {
   return (
     <PageShell wide>
       <SectionNavRail titles={SECTION_TITLES} />
+      <div className="pt-8">
+        <BackLink to="/learn/deep-learning" label="Deep Learning" />
+      </div>
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">Feed-forward networks</h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">
@@ -34,7 +39,7 @@ export function FeedForwardExplainer() {
       <ScrollSection
         index={1}
         title="Expand, then contract"
-        math="FFN(x) = activation(x W_1 + b_1) W_2 + b_2"
+        math="\text{FFN}(x) = \text{activation}(xW_1 + b_1)\,W_2 + b_2"
         steps={SHAPE_STEPS}
         renderGraphic={(activeStep) => (
           <FeedForwardDiagram stage={activeStep === 0 ? "narrow" : activeStep === 1 ? "wide" : "narrow-again"} />
@@ -47,6 +52,18 @@ export function FeedForwardExplainer() {
         steps={NONLINEARITY_STEPS}
         renderGraphic={(activeStep) => <ActivationCurve highlight={activeStep === 0 ? "relu" : "gelu"} />}
       />
+
+      <section className="max-w-2xl py-10">
+        <p className="text-sm text-[var(--color-text-muted)]">
+          ReLU and GELU are two points in a much bigger design space. The{" "}
+          <a href="/explainers/activation-functions" className="text-[var(--color-query)] hover:underline">
+            activation functions page
+          </a>{" "}
+          compares sigmoid, tanh, the whole ReLU family, and Swish side by
+          side, and lets you play with each one.
+        </p>
+      </section>
+      <ScrollEnd />
     </PageShell>
   );
 }

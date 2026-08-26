@@ -1,6 +1,8 @@
 import { PageShell } from "../../components/layout/PageShell";
+import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
 import { SectionNavRail } from "../../viz-core/SectionNavRail";
+import { ScrollEnd } from "../../viz-core/ScrollEnd";
 import { TokenFlowDiagram } from "../../features/transformers/viz/TokenFlowDiagram";
 import { EmbeddingCloud3D } from "../../features/transformers/viz/EmbeddingCloud3D";
 
@@ -21,6 +23,9 @@ export function EmbeddingsExplainer() {
   return (
     <PageShell wide>
       <SectionNavRail titles={SECTION_TITLES} />
+      <div className="pt-8">
+        <BackLink to="/learn/nlp" label="NLP" />
+      </div>
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">Embeddings</h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">
@@ -32,7 +37,7 @@ export function EmbeddingsExplainer() {
       <ScrollSection
         index={1}
         title="Turning words into numbers"
-        math="x_i = E[token_i]"
+        math="x_i = E[\text{token}_i]"
         steps={NUMBERS_STEPS}
         renderGraphic={(activeStep) => (
           <div className="flex flex-col gap-6">
@@ -48,6 +53,7 @@ export function EmbeddingsExplainer() {
         steps={WHY_STEPS}
         renderGraphic={() => <EmbeddingCloud3D />}
       />
+      <ScrollEnd />
     </PageShell>
   );
 }

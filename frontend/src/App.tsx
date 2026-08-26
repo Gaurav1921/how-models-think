@@ -17,6 +17,8 @@ import { FeedForwardExplainer } from "./routes/explainers/FeedForwardExplainer";
 import { DeepLearningBasicsExplainer } from "./routes/explainers/DeepLearningBasicsExplainer";
 import { PerceptronExplainer } from "./routes/explainers/PerceptronExplainer";
 import { EmbeddingsExplainer } from "./routes/explainers/EmbeddingsExplainer";
+import { ActivationFunctionsExplainer } from "./routes/explainers/ActivationFunctionsExplainer";
+import { LossFunctionsExplainer } from "./routes/explainers/LossFunctionsExplainer";
 import { NotFound } from "./routes/NotFound";
 import { GlossaryProvider } from "./lib/GlossaryContext";
 
@@ -45,6 +47,8 @@ export function App() {
               <Route path="/explainers/deep-learning-basics" element={<DeepLearningBasicsExplainer />} />
               <Route path="/explainers/perceptron" element={<PerceptronExplainer />} />
               <Route path="/explainers/embeddings" element={<EmbeddingsExplainer />} />
+              <Route path="/explainers/activation-functions" element={<ActivationFunctionsExplainer />} />
+              <Route path="/explainers/loss-functions" element={<LossFunctionsExplainer />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

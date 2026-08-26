@@ -1,9 +1,23 @@
 import { PageShell } from "../../components/layout/PageShell";
+import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
 import { SectionNavRail } from "../../viz-core/SectionNavRail";
+import { ScrollEnd } from "../../viz-core/ScrollEnd";
 import { LayerStackDiagram } from "../../features/explainers/deep-learning-basics/LayerStackDiagram";
+import { AIMLDLDiagram } from "../../features/explainers/deep-learning-basics/AIMLDLDiagram";
 
-const SECTION_TITLES = ["What deep learning actually is", "Why stack layers at all", "The training loop, at a glance"];
+const SECTION_TITLES = [
+  "AI, ML, DL, and where this fits",
+  "What deep learning actually is",
+  "Why stack layers at all",
+  "The training loop, at a glance",
+];
+
+const TAXONOMY_STEPS = [
+  "Artificial Intelligence is the broadest term: an application that performs a task on its own, without a human specifying every step, by learning from data instead. Machine Learning is a subset of that, statistical tools and algorithms for prediction, forecasting, and clustering.",
+  "Deep Learning is a subset of Machine Learning, specifically the multi-layered neural networks this whole domain covers. The research dates back to 1958, but it only became mainstream in the last decade, driven by two things arriving together: an explosion of available data, and GPU hardware that makes training large networks practical.",
+  "Data Science doesn't nest neatly inside this picture. A data scientist's work touches AI, ML, or DL depending on the task, sometimes it's building a predictive model, sometimes training a deep network, sometimes just cleaning and analyzing data. The tool changes; the goal, shipping something useful from data, doesn't.",
+];
 
 const WHAT_STEPS = [
   "A deep learning model is a stack of simple mathematical functions, layers, each one transforming its input a little, with the output of one layer feeding the next.",
@@ -28,6 +42,9 @@ export function DeepLearningBasicsExplainer() {
   return (
     <PageShell wide>
       <SectionNavRail titles={SECTION_TITLES} />
+      <div className="pt-8">
+        <BackLink to="/learn/deep-learning" label="Deep Learning" />
+      </div>
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">Basics of deep learning</h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">
@@ -39,24 +56,32 @@ export function DeepLearningBasicsExplainer() {
 
       <ScrollSection
         index={1}
+        title="AI, ML, DL, and where this fits"
+        steps={TAXONOMY_STEPS}
+        renderGraphic={() => <AIMLDLDiagram />}
+      />
+
+      <ScrollSection
+        index={2}
         title="What deep learning actually is"
         steps={WHAT_STEPS}
         renderGraphic={() => <LayerStackDiagram highlight="flow" />}
       />
 
       <ScrollSection
-        index={2}
+        index={3}
         title="Why stack layers at all"
         steps={WHY_STACK_STEPS}
         renderGraphic={() => <LayerStackDiagram highlight="weights" />}
       />
 
       <ScrollSection
-        index={3}
+        index={4}
         title="The training loop, at a glance"
         steps={TRAINING_LOOP_STEPS}
         renderGraphic={() => <LayerStackDiagram highlight="loop" />}
       />
+      <ScrollEnd />
     </PageShell>
   );
 }

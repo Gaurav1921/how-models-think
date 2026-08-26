@@ -11,7 +11,7 @@ const links = [
 export function Footer() {
   return (
     <footer className="border-t border-[var(--color-border)]">
-      <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-start sm:justify-between 2xl:max-w-7xl">
         <p className="max-w-sm text-sm text-[var(--color-text-muted)]">
           Built to make transformers, attention, and the engineering around
           large language models easier to see and understand.

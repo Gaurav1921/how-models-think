@@ -21,7 +21,7 @@ export function NavBar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-bg)]/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 2xl:max-w-7xl">
         <NavLink to="/" className="font-semibold tracking-tight" onClick={() => setMenuOpen(false)}>
           How Models Think
         </NavLink>

@@ -36,7 +36,7 @@ export function QKVSection() {
     <ScrollSection
       index={4}
       title="Query, Key, Value"
-      math="Q = XW_Q,  K = XW_K,  V = XW_V"
+      math="Q = XW_Q, \quad K = XW_K, \quad V = XW_V"
       caption="Each small bar is one dimension of the vector on that side. Bar color fades toward black as that dimension's value drops toward 0, so a vector with several low values can look like it has fewer bars than one with high values everywhere. It doesn't, every vector here has the same 8 dimensions; a dark bar is still a bar, just a small number."
       steps={STEPS}
       renderGraphic={() => (

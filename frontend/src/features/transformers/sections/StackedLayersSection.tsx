@@ -19,7 +19,7 @@ export function StackedLayersSection() {
     <ScrollSection
       index={8}
       title="Stacking blocks"
-      math="z = LayerNorm(x + Attention(x)),  y = LayerNorm(z + FFN(z))"
+      math="z = \text{LayerNorm}(x + \text{Attention}(x)), \quad y = \text{LayerNorm}(z + \text{FFN}(z))"
       steps={STEPS}
       renderGraphic={(activeStep) => (
         <StackedBlocksDiagram

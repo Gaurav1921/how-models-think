@@ -1,13 +1,17 @@
 import { PageShell } from "../../components/layout/PageShell";
+import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
 import { SectionNavRail } from "../../viz-core/SectionNavRail";
+import { ScrollEnd } from "../../viz-core/ScrollEnd";
 import { ForwardBackwardDiagram } from "../../features/explainers/backpropagation/ForwardBackwardDiagram";
-import { LossDescentPlot } from "../../features/transformers/viz/LossDescentPlot";
+import { VanishingGradientExplorer } from "../../features/explainers/backpropagation/VanishingGradientExplorer";
+import { GradientDescentBowl } from "../../features/explainers/backpropagation/GradientDescentBowl";
 
 const SECTION_TITLES = [
   "Forward propagation: making a guess",
   "Backpropagation: assigning blame",
   "Gradient descent: taking the step",
+  "The vanishing gradient problem",
 ];
 
 const FORWARD_STEPS = [
@@ -18,11 +22,19 @@ const FORWARD_STEPS = [
 const BACKWARD_STEPS = [
   "Backpropagation runs the same network in reverse: starting from the loss, it uses the chain rule from calculus to work out how much each weight contributed to the error.",
   "Every weight ends up with a gradient, a number saying which direction, and how strongly, changing that one weight would increase the loss. A weight that barely affected the output gets a small gradient; one that mattered a lot gets a large one.",
+  "A weight near the start of the network isn't directly connected to the loss, it only affects it indirectly, through every neuron between it and the output. The chain rule handles that by multiplying the local derivative at every step along the path back. When a neuron's output feeds into more than one neuron ahead of it, the chain rule sums the contribution from every path.",
 ];
 
 const DESCENT_STEPS = [
-  "Gradient descent uses those gradients to actually update the weights, nudging each one a small step in the opposite direction, the direction that decreases the loss.",
-  "The learning rate controls how big that step is. Too large and training overshoots and destabilizes; too small and it crawls. Repeat this across billions of examples, and the weights slowly converge on values that make good predictions.",
+  "Gradient descent uses those gradients to actually update the weights, nudging each one a small step in the opposite direction, the direction that decreases the loss. The curve below is the real shape a squared-error loss traces against a single weight: a parabola, or bowl, with one lowest point.",
+  "The gradient at any point is just the slope of that bowl there, drag the weight slider and watch the tangent line (and the dL/dw readout) flip sign on either side of the minimum. Gradient descent always steps in the opposite direction of that slope.",
+  "The learning rate controls how big that step is. Too large and training overshoots and destabilizes; too small and it crawls. Press \"take a gradient step\" a few times from anywhere on the curve and watch it walk downhill toward the minimum, exactly the update rule below, repeated.",
+];
+
+const VANISHING_STEPS = [
+  "Because backpropagation multiplies one derivative per layer, the exact chain rule from the last section, a deep stack of layers multiplies many numbers together on the way back to the first weight.",
+  "Sigmoid's derivative never exceeds 0.25. Multiply several numbers all smaller than 0.25 and the product shrinks fast: with almost no gradient reaching them, the earliest layers barely learn at all, even while later layers keep training normally. That's the vanishing gradient problem, and it's the main reason ReLU-family activations replaced sigmoid and tanh in hidden layers.",
+  "Try it: push the depth slider up with sigmoid selected and watch the bars vanish within a handful of layers. Switch to ReLU, whose derivative is exactly 1 for positive inputs, not a fraction, and the bars stop shrinking entirely.",
 ];
 
 /** Explainer page: forward propagation, backpropagation, and gradient descent. */
@@ -30,6 +42,9 @@ export function BackpropagationExplainer() {
   return (
     <PageShell wide>
       <SectionNavRail titles={SECTION_TITLES} />
+      <div className="pt-8">
+        <BackLink to="/learn/deep-learning" label="Deep Learning" />
+      </div>
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">
           Backpropagation and gradient descent
@@ -43,7 +58,7 @@ export function BackpropagationExplainer() {
       <ScrollSection
         index={1}
         title="Forward propagation: making a guess"
-        math="y_hat = f(W_2 f(W_1 x)),  L = loss(y_hat, y)"
+        math="\hat{y} = f(W_2\, f(W_1 x)), \qquad L = \text{loss}(\hat{y}, y)"
         steps={FORWARD_STEPS}
         renderGraphic={() => <ForwardBackwardDiagram direction="forward" />}
       />
@@ -51,7 +66,7 @@ export function BackpropagationExplainer() {
       <ScrollSection
         index={2}
         title="Backpropagation: assigning blame"
-        math="dL/dw = (dL/dy_hat) * (dy_hat/dh) * (dh/dw)"
+        math="\frac{\partial L}{\partial w} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial h} \cdot \frac{\partial h}{\partial w}"
         steps={BACKWARD_STEPS}
         renderGraphic={() => <ForwardBackwardDiagram direction="backward" />}
       />
@@ -59,10 +74,18 @@ export function BackpropagationExplainer() {
       <ScrollSection
         index={3}
         title="Gradient descent: taking the step"
-        math="w <- w - eta * dL/dw"
+        math="w \leftarrow w - \eta \frac{\partial L}{\partial w}"
         steps={DESCENT_STEPS}
-        renderGraphic={(activeStep) => <LossDescentPlot progress={activeStep / (DESCENT_STEPS.length - 1)} />}
+        renderGraphic={() => <GradientDescentBowl />}
       />
+
+      <ScrollSection
+        index={4}
+        title="The vanishing gradient problem"
+        steps={VANISHING_STEPS}
+        renderGraphic={() => <VanishingGradientExplorer />}
+      />
+      <ScrollEnd />
     </PageShell>
   );
 }

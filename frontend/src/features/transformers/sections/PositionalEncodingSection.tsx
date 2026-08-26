@@ -17,7 +17,7 @@ export function PositionalEncodingSection() {
     <ScrollSection
       index={7}
       title="Positional encoding"
-      math="PE(pos, 2i) = sin(pos / 10000^(2i/d)),  PE(pos, 2i+1) = cos(pos / 10000^(2i/d))"
+      math="PE_{(pos,\,2i)} = \sin\!\left(\frac{pos}{10000^{2i/d}}\right), \quad PE_{(pos,\,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)"
       steps={STEPS}
       renderGraphic={(activeStep) => {
         if (activeStep < 3) return <PositionalWavePlot />;

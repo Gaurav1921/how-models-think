@@ -36,20 +36,38 @@
   {
     "slug": "backpropagation",
     "title": "Forward & backward propagation",
-    "summary": "How a network turns a wrong guess into a slightly better set of weights, one training step at a time.",
+    "summary": "How a network turns a wrong guess into a slightly better set of weights, including the vanishing gradient problem that shapes which activations work.",
     "status": "live",
     "domain": "deep-learning",
     "category": "ann",
     "order": 3
   },
   {
-    "slug": "feed-forward-networks",
-    "title": "Feed-forward networks & activation functions",
-    "summary": "The expand, bend, contract pattern behind every dense layer, and why the bend (the non-linearity) is what makes it work.",
+    "slug": "activation-functions",
+    "title": "Activation functions",
+    "summary": "Sigmoid through Swish, compared side by side and playable: drag the input and watch every curve respond.",
     "status": "live",
     "domain": "deep-learning",
     "category": "ann",
     "order": 4
+  },
+  {
+    "slug": "loss-functions",
+    "title": "Loss functions",
+    "summary": "The number training is always trying to shrink: MSE, MAE, Huber for regression, cross-entropy for classification.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "ann",
+    "order": 5
+  },
+  {
+    "slug": "feed-forward-networks",
+    "title": "Feed-forward networks",
+    "summary": "The expand, bend, contract pattern behind every dense layer, and where most of a network's parameters actually live.",
+    "status": "live",
+    "domain": "deep-learning",
+    "category": "ann",
+    "order": 6
   },
   {
     "slug": "optimizers",
@@ -58,7 +76,7 @@
     "status": "coming-soon",
     "domain": "deep-learning",
     "category": "ann",
-    "order": 5
+    "order": 7
   },
   {
     "slug": "embeddings",

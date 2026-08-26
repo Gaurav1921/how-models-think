@@ -25,7 +25,7 @@ export function ScaledDotProductSection() {
     <ScrollSection
       index={5}
       title="Scaled dot-product attention"
-      math="softmax(QK^T / sqrt(d_k) + mask) V"
+      math="\text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}} + \text{mask}\right) V"
       steps={STEPS}
       renderGraphic={(activeStep) => {
         if (activeStep === 0) {

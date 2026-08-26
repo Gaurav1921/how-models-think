@@ -1,18 +1,23 @@
 import { PageShell } from "../../components/layout/PageShell";
+import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
 import { SectionNavRail } from "../../viz-core/SectionNavRail";
+import { ScrollEnd } from "../../viz-core/ScrollEnd";
 import { ScatterDiagram } from "../../features/explainers/perceptron/ScatterDiagram";
+import { PerceptronPlayground } from "../../features/explainers/perceptron/PerceptronPlayground";
 
 const SECTION_TITLES = ["A single artificial neuron", "A straight line through your data", "Where it breaks"];
 
 const NEURON_STEPS = [
   "The Perceptron, introduced by Frank Rosenblatt in 1958, is the simplest possible model of a neuron: take a set of inputs, multiply each by a weight, add them up, and add one more number called a bias.",
   "Then check whether that sum clears a threshold. If it does, the perceptron fires and outputs 1. If not, it stays silent and outputs 0. That's the entire model: a weighted vote, thresholded.",
+  "Why bias matters: if every weight starts at 0, every weighted input is 0 too, no matter what the input is. The bias term exists specifically so the neuron's output isn't forced to 0 at the very start, which is what lets training actually begin.",
 ];
 
 const LINE_STEPS = [
   "Geometrically, a perceptron's weights and bias define a straight line, or with more inputs, a flat plane, that cuts the space of possible inputs in two. Everything on one side fires; everything on the other doesn't.",
   "Learning means adjusting the weights and bias so that line ends up in the right place. The perceptron learning rule nudges it a little every time it misclassifies an example; correct answers leave it alone.",
+  "Try it yourself: drag the two sliders below until every point is classified correctly. That's exactly what training a perceptron is automating, searching for a weight angle and bias that separate the classes.",
 ];
 
 const LIMIT_STEPS = [
@@ -43,6 +48,9 @@ export function PerceptronExplainer() {
   return (
     <PageShell wide>
       <SectionNavRail titles={SECTION_TITLES} />
+      <div className="pt-8">
+        <BackLink to="/learn/deep-learning" label="Deep Learning" />
+      </div>
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">The Perceptron</h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">
@@ -54,7 +62,7 @@ export function PerceptronExplainer() {
       <ScrollSection
         index={1}
         title="A single artificial neuron"
-        math="y = step(w1*x1 + w2*x2 + ... + b)"
+        math="y = \text{step}(w_1 x_1 + w_2 x_2 + \cdots + b)"
         steps={NEURON_STEPS}
         renderGraphic={() => <ScatterDiagram points={SEPARABLE_POINTS} />}
       />
@@ -63,7 +71,7 @@ export function PerceptronExplainer() {
         index={2}
         title="A straight line through your data"
         steps={LINE_STEPS}
-        renderGraphic={() => <ScatterDiagram points={SEPARABLE_POINTS} showLine />}
+        renderGraphic={() => <PerceptronPlayground />}
       />
 
       <ScrollSection
@@ -72,6 +80,7 @@ export function PerceptronExplainer() {
         steps={LIMIT_STEPS}
         renderGraphic={() => <ScatterDiagram points={XOR_POINTS} impossible />}
       />
+      <ScrollEnd />
     </PageShell>
   );
 }

@@ -16,7 +16,7 @@ export function IntroSection() {
     <ScrollSection
       index={1}
       title="Predicting the next token"
-      math="P(next token | tokens so far)"
+      math="P(\text{next token} \mid \text{tokens so far})"
       steps={STEPS}
       renderGraphic={(activeStep) => (
         <div className="flex flex-col gap-6">

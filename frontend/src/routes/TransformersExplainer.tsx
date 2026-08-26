@@ -1,6 +1,8 @@
 import { PageShell } from "../components/layout/PageShell";
 import { Term } from "../components/common/Term";
+import { BackLink } from "../components/common/BackLink";
 import { SectionNavRail } from "../viz-core/SectionNavRail";
+import { ScrollEnd } from "../viz-core/ScrollEnd";
 import { IntroSection } from "../features/transformers/sections/IntroSection";
 import { TokenizationSection } from "../features/transformers/sections/TokenizationSection";
 import { EmbeddingSpaceSection } from "../features/transformers/sections/EmbeddingSpaceSection";
@@ -30,6 +32,9 @@ export function TransformersExplainer() {
   return (
     <PageShell wide>
       <SectionNavRail titles={SECTION_TITLES} />
+      <div className="pt-8">
+        <BackLink to="/learn/transformers" label="Transformers" />
+      </div>
       <header className="py-8">
         <h1 className="font-serif text-4xl leading-tight sm:text-5xl">
           Transformers and Attention Is All You Need
@@ -67,6 +72,7 @@ export function TransformersExplainer() {
       <StackedLayersSection />
       <OutputProjectionSection />
       <TrainingSection />
+      <ScrollEnd />
     </PageShell>
   );
 }

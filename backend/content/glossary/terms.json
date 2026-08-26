@@ -33,13 +33,19 @@
     "slug": "loss-function",
     "term": "Loss function",
     "short_definition": "A single number that measures how wrong a model's prediction was for one example, the quantity that training tries to minimize.",
-    "read_more_href": null
+    "read_more_href": "/explainers/loss-functions"
   },
   {
     "slug": "softmax",
     "term": "Softmax",
     "short_definition": "A function that turns a list of raw scores into a probability distribution: every value becomes positive and the whole list sums to 1, with larger scores getting disproportionately more weight.",
-    "read_more_href": null
+    "read_more_href": "/explainers/activation-functions"
+  },
+  {
+    "slug": "activation-function",
+    "term": "Activation function",
+    "short_definition": "A function such as sigmoid, ReLU, or tanh applied to a neuron's weighted sum, introducing non-linearity so a network can represent more than a straight line.",
+    "read_more_href": "/explainers/activation-functions"
   },
   {
     "slug": "logit",

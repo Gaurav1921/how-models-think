@@ -30,7 +30,7 @@ export function TrainingSection() {
     <ScrollSection
       index={10}
       title="How these weights get learned"
-      math="L = -log P(correct token),  w <- w - eta * dL/dw"
+      math="L = -\log P(\text{correct token}), \qquad w \leftarrow w - \eta \frac{\partial L}{\partial w}"
       steps={STEPS}
       renderGraphic={(activeStep) => (
         <LossDescentPlot progress={activeStep / (STEPS.length - 1)} />

@@ -59,3 +59,11 @@ def test_list_curriculum_categories_includes_ann():
     assert response.status_code == 200
     slugs = [item["slug"] for item in response.json()]
     assert "ann" in slugs
+
+
+def test_list_explainers_includes_activation_and_loss_functions():
+    response = client.get("/api/explainers")
+    assert response.status_code == 200
+    slugs = [item["slug"] for item in response.json()]
+    assert "activation-functions" in slugs
+    assert "loss-functions" in slugs
