@@ -56,9 +56,10 @@ export function TransformersExplainer() {
           cross-attention sublayer, to the encoder's output. This page
           covers the decoder half on its own, which is the architecture
           GPT-style LLMs actually use for next-token prediction. Every
-          mechanism below, attention, multi-head attention, positional
-          encoding, stacked blocks, is identical either way. Cross-attention
-          and the encoder side get their own explainer later.
+          mechanism below, attention, <Term slug="multi-head-attention">multi-head attention</Term>,{" "}
+          <Term slug="positional-encoding">positional encoding</Term>, stacked
+          blocks, is identical either way. Cross-attention and the encoder
+          side get their own explainer later.
         </div>
       </header>
 

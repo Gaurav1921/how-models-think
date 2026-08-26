@@ -1,13 +1,18 @@
 import { NEXT_TOKEN_CANDIDATES, NEXT_TOKEN_PROBABILITIES } from "../exampleData";
 import { AttentionRowBars } from "../viz/AttentionRowBars";
 import { ScrollSection } from "../../../viz-core/ScrollSection";
+import { Term } from "../../../components/common/Term";
 
 const EMPTY = NEXT_TOKEN_PROBABILITIES.map(() => 0);
 
 const STEPS = [
   "Type anything into a chatbot, and underneath the conversation is one repeated operation: given the text so far, guess what comes next.",
   "That guess is not a single word. It is a probability spread across the model's entire vocabulary, every possible next token ranked by how likely it is.",
-  "Everything else on this page, tokenization, embeddings, attention, stacked layers, is really just how that probability distribution gets computed.",
+  <>
+    Everything else on this page, <Term slug="tokenization">tokenization</Term>,
+    embeddings, attention, stacked layers, is really just how that
+    probability distribution gets computed.
+  </>,
 ];
 
 /** Section 1: framing LLMs as next-token prediction. */

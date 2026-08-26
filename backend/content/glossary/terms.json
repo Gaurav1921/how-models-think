@@ -64,5 +64,35 @@
     "term": "Recurrent neural network (RNN)",
     "short_definition": "An older architecture that processes a sequence one token at a time, carrying a running hidden state forward, which makes it hard to parallelize and prone to forgetting distant tokens, the problem transformers were designed to solve.",
     "read_more_href": "/explainers/rnn"
+  },
+  {
+    "slug": "residual-connection",
+    "term": "Residual connection",
+    "short_definition": "A shortcut that adds a layer's input directly onto its output, so a deep stack of layers only has to learn a correction on top of an identity path instead of the whole transformation from scratch, which keeps gradients flowing during training.",
+    "read_more_href": "/transformers"
+  },
+  {
+    "slug": "layer-normalization",
+    "term": "Layer normalization (LayerNorm)",
+    "short_definition": "A step that rescales each token's vector on its own, subtracting its mean and dividing by its standard deviation, so every token enters the next layer on the same predictable scale.",
+    "read_more_href": "/transformers"
+  },
+  {
+    "slug": "multi-head-attention",
+    "term": "Multi-head attention",
+    "short_definition": "Running several smaller self-attention operations in parallel, each with its own learned projections, so the model can attend to different kinds of relationships (nearby words, subject-verb pairs, position) at once instead of averaging them into one.",
+    "read_more_href": "/transformers"
+  },
+  {
+    "slug": "positional-encoding",
+    "term": "Positional encoding",
+    "short_definition": "A fixed pattern of sine and cosine waves added to each token's embedding so the model can tell tokens apart by position, since attention on its own treats a sequence as an unordered set.",
+    "read_more_href": "/transformers"
+  },
+  {
+    "slug": "tokenization",
+    "term": "Tokenization",
+    "short_definition": "Splitting raw text into the smaller pieces, roughly word-sized or sub-word-sized, that a model actually operates on, the first step before any of those pieces become embeddings.",
+    "read_more_href": "/transformers"
   }
 ]

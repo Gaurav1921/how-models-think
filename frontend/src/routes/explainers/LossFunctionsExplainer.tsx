@@ -26,9 +26,14 @@ const CLASSIFICATION_STEPS = [
 ];
 
 const MATCHING_STEPS = [
-  "Categorical Cross-Entropy (CCE) is the multi-class generalization of BCE, paired with a softmax output layer. Because softmax gives a probability for every class and exactly one is correct, the loss collapses to the negative log of the probability assigned to the correct class.",
+  "Categorical Cross-Entropy (CCE) is the multi-class generalization of BCE, paired with a softmax output layer. Because softmax gives a probability for every class and exactly one is correct, the sum in the real formula collapses to a single term: the negative log of the probability assigned to the correct class.",
+  "Say a 3-class softmax outputs 0.70, 0.20, 0.10, and the true class is the first one. CCE only looks at the probability the model gave the right answer, everything below is the same -log(p) curve as BCE, just evaluated at whichever class was actually correct.",
   "The output activation and the loss function are always chosen together, as a matched pair, driven entirely by the task, not independently.",
 ];
+
+const CCE_PROBABILITIES = [0.7, 0.2, 0.1];
+const CCE_TRUE_CLASS_INDEX = 0;
+const CCE_LOSS = -Math.log(CCE_PROBABILITIES[CCE_TRUE_CLASS_INDEX]);
 
 const MATCHING_ROWS = [
   { task: "Regression", activation: "Linear (no activation)", loss: "MSE, MAE, or Huber" },
@@ -84,29 +89,60 @@ export function LossFunctionsExplainer() {
       <ScrollSection
         index={4}
         title="Matching losses to tasks"
+        math="\text{CCE} = -\log(p_{\text{correct class}})"
         steps={MATCHING_STEPS}
-        renderGraphic={() => (
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[420px] border-collapse text-left text-sm">
-              <thead>
-                <tr className="border-b border-[var(--color-border)] text-[var(--color-text-muted)]">
-                  <th className="px-3 py-2 font-medium">Task</th>
-                  <th className="px-3 py-2 font-medium">Output activation</th>
-                  <th className="px-3 py-2 font-medium">Loss</th>
-                </tr>
-              </thead>
-              <tbody>
-                {MATCHING_ROWS.map((row) => (
-                  <tr key={row.task} className="border-b border-[var(--color-border)] last:border-b-0">
-                    <td className="px-3 py-2 font-medium">{row.task}</td>
-                    <td className="px-3 py-2 text-[var(--color-text-muted)]">{row.activation}</td>
-                    <td className="px-3 py-2 text-[var(--color-text-muted)]">{row.loss}</td>
+        renderGraphic={(activeStep) => {
+          if (activeStep < 2) {
+            return (
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-wrap gap-3 font-mono text-sm">
+                  {CCE_PROBABILITIES.map((probability, index) => (
+                    <div
+                      key={index}
+                      className="rounded-lg border px-3 py-2"
+                      style={{
+                        borderColor: index === CCE_TRUE_CLASS_INDEX ? "var(--color-attention)" : "var(--color-border)",
+                      }}
+                    >
+                      <span className="text-[var(--color-text-muted)]">class {index}: </span>
+                      <span style={{ color: index === CCE_TRUE_CLASS_INDEX ? "var(--color-attention)" : undefined }}>
+                        {probability.toFixed(2)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                {activeStep === 1 && (
+                  <p className="font-mono text-xs text-[var(--color-text-muted)]">
+                    true class = 0 -&gt; CCE = -log(0.70) ={" "}
+                    <span style={{ color: "var(--color-attention)" }}>{CCE_LOSS.toFixed(3)}</span>
+                  </p>
+                )}
+              </div>
+            );
+          }
+          return (
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[420px] border-collapse text-left text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--color-border)] text-[var(--color-text-muted)]">
+                    <th className="px-3 py-2 font-medium">Task</th>
+                    <th className="px-3 py-2 font-medium">Output activation</th>
+                    <th className="px-3 py-2 font-medium">Loss</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+                </thead>
+                <tbody>
+                  {MATCHING_ROWS.map((row) => (
+                    <tr key={row.task} className="border-b border-[var(--color-border)] last:border-b-0">
+                      <td className="px-3 py-2 font-medium">{row.task}</td>
+                      <td className="px-3 py-2 text-[var(--color-text-muted)]">{row.activation}</td>
+                      <td className="px-3 py-2 text-[var(--color-text-muted)]">{row.loss}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+        }}
       />
 
       <section className="max-w-2xl py-10">

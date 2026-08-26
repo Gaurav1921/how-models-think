@@ -1,5 +1,6 @@
 import { HEAD_TOKENS, MULTI_HEAD_WEIGHTS } from "../exampleData";
 import { AttentionMatrix } from "../viz/AttentionMatrix";
+import { DimensionSplitDiagram } from "../viz/DimensionSplitDiagram";
 import { ScrollSection } from "../../../viz-core/ScrollSection";
 
 const STEPS = [
@@ -39,7 +40,14 @@ export function MultiHeadSection() {
       steps={STEPS}
       renderGraphic={(activeStep) => {
         if (activeStep === 0) return <HeadsGrid count={1} />;
-        if (activeStep === 1) return <HeadsGrid count={4} />;
+        if (activeStep === 1) {
+          return (
+            <div className="flex flex-col gap-4">
+              <DimensionSplitDiagram />
+              <HeadsGrid count={4} />
+            </div>
+          );
+        }
         return (
           <div className="flex flex-col gap-3">
             <HeadsGrid count={4} />
