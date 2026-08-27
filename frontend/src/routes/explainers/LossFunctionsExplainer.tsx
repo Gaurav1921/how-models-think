@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PageShell } from "../../components/layout/PageShell";
 import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
@@ -15,7 +16,7 @@ const LOSS_VS_COST_STEPS = [
 ];
 
 const REGRESSION_STEPS = [
-  "Mean Squared Error (MSE) is the default for regression: half the squared difference between the true value and the prediction. Squaring makes it a quadratic, the exact bowl shape gradient descent needs, but it also means one large outlier contributes disproportionately to the loss.",
+  "Mean Squared Error (MSE) is the default for regression: half the squared difference between the true value and the prediction. Squaring makes it a quadratic, a smooth bowl shape that's especially easy for gradient descent to descend (gradient descent works on far messier, non-convex surfaces too, this is just the friendliest case), but it also means one large outlier contributes disproportionately to the loss.",
   "Mean Absolute Error (MAE) uses the absolute difference instead. It grows linearly, so a large outlier contributes proportionally to its size rather than its square, at the cost of a sharp corner at zero error where the slope is undefined.",
   "Huber loss is a deliberate compromise: quadratic like MSE for small errors, linear like MAE for large ones, switching over at a threshold. Drag the slider and watch MSE curve upward fastest while MAE grows in a straight line.",
 ];
@@ -149,9 +150,9 @@ export function LossFunctionsExplainer() {
         <p className="text-sm text-[var(--color-text-muted)]">
           See also <Term slug="loss-function">loss function</Term> in the
           glossary, and how a computed loss actually updates weights on the{" "}
-          <a href="/explainers/backpropagation" className="text-[var(--color-query)] hover:underline">
+          <Link to="/explainers/backpropagation" className="text-[var(--color-query)] hover:underline">
             backpropagation page
-          </a>
+          </Link>
           .
         </p>
       </section>

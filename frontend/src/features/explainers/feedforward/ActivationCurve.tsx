@@ -1,18 +1,11 @@
 import { line as d3Line, scaleLinear } from "d3";
 import { vizColors } from "../../../viz-core/colors";
+import { gelu, relu } from "../activation-functions/activationMath";
 
 const WIDTH = 480;
 const HEIGHT = 200;
 const DOMAIN = 6;
 const POINT_COUNT = 120;
-
-function relu(x: number): number {
-  return Math.max(0, x);
-}
-
-function gelu(x: number): number {
-  return 0.5 * x * (1 + Math.tanh(Math.sqrt(2 / Math.PI) * (x + 0.044715 * x ** 3)));
-}
 
 const xs = Array.from({ length: POINT_COUNT }, (_, index) => -DOMAIN + (2 * DOMAIN * index) / (POINT_COUNT - 1));
 

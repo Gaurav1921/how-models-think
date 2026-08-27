@@ -15,7 +15,7 @@ const NUMBERS_STEPS = [
 
 const WHY_STEPS = [
   "An RNN's hidden state math, matrix multiplications and additions, only works on numbers. Feed it raw words directly and there's nothing to compute; embeddings are the translation layer that makes text usable by any neural network at all.",
-  "This is why the same first step shows up everywhere. Transformers, RNNs, and every other text-based architecture all start by turning tokens into embeddings before their own specific mechanism, attention, recurrence, or anything else, takes over.",
+  "This is why the same first step shows up everywhere. Transformers, RNNs, and every other neural text architecture all start by turning tokens into embeddings before their own specific mechanism, attention, recurrence, or anything else, takes over. Older statistical methods, like bag-of-words or TF-IDF, skip this step entirely and work with word counts directly, but modern neural models all share this starting point.",
 ];
 
 /** Explainer page: word/token embeddings, the shared first step behind every text architecture. */

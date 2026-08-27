@@ -26,7 +26,7 @@ const BACKWARD_STEPS = [
 ];
 
 const DESCENT_STEPS = [
-  "Gradient descent uses those gradients to actually update the weights, nudging each one a small step in the opposite direction, the direction that decreases the loss. The curve below is the real shape a squared-error loss traces against a single weight: a parabola, or bowl, with one lowest point.",
+  "Gradient descent uses those gradients to actually update the weights, nudging each one a small step in the opposite direction, the direction that decreases the loss. The curve below shows a squared-error loss traced against a single weight in a simple linear model, a parabola, or bowl, with one lowest point. Once that weight sits behind a non-linearity inside a real multi-layer network, the loss traced against it is no longer guaranteed to be this clean: deep-net loss landscapes are generally non-convex, with saddle points and multiple local minima, which is exactly why momentum, adaptive learning rates, and good initialization matter in practice.",
   "The gradient at any point is just the slope of that bowl there, drag the weight slider and watch the tangent line (and the dL/dw readout) flip sign on either side of the minimum. Gradient descent always steps in the opposite direction of that slope.",
   "The learning rate controls how big that step is. Too large and training overshoots and destabilizes; too small and it crawls. Press \"take a gradient step\" a few times from anywhere on the curve and watch it walk downhill toward the minimum, exactly the update rule below, repeated.",
 ];
@@ -34,7 +34,7 @@ const DESCENT_STEPS = [
 const VANISHING_STEPS = [
   "Because backpropagation multiplies one derivative per layer, the exact chain rule from the last section, a deep stack of layers multiplies many numbers together on the way back to the first weight.",
   "Sigmoid's derivative never exceeds 0.25. Multiply several numbers all smaller than 0.25 and the product shrinks fast: with almost no gradient reaching them, the earliest layers barely learn at all, even while later layers keep training normally. That's the vanishing gradient problem, and it's the main reason ReLU-family activations replaced sigmoid and tanh in hidden layers.",
-  "Try it: push the depth slider up with sigmoid selected and watch the bars vanish within a handful of layers. Switch to ReLU, whose derivative is exactly 1 for positive inputs, not a fraction, and the bars stop shrinking entirely.",
+  "Try it: push the depth slider up with sigmoid selected and watch the bars vanish within a handful of layers. Switch to ReLU, whose derivative is exactly 1 for positive inputs, not a fraction, and the bars stop shrinking from that cause. This demo isolates only the activation-derivative term, though: real gradients also multiply by the weight matrices at every layer, so depth still needs careful initialization, normalization, or residual connections even with ReLU.",
 ];
 
 /** Explainer page: forward propagation, backpropagation, and gradient descent. */

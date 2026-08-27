@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PageShell } from "../../components/layout/PageShell";
 import { BackLink } from "../../components/common/BackLink";
 import { ScrollSection } from "../../viz-core/ScrollSection";
@@ -56,9 +57,9 @@ export function FeedForwardExplainer() {
       <section className="max-w-2xl py-10">
         <p className="text-sm text-[var(--color-text-muted)]">
           ReLU and GELU are two points in a much bigger design space. The{" "}
-          <a href="/explainers/activation-functions" className="text-[var(--color-query)] hover:underline">
+          <Link to="/explainers/activation-functions" className="text-[var(--color-query)] hover:underline">
             activation functions page
-          </a>{" "}
+          </Link>{" "}
           compares sigmoid, tanh, the whole ReLU family, and Swish side by
           side, and lets you play with each one.
         </p>

@@ -22,8 +22,8 @@ irrelevant ones, and varied where in the input the relevant document appeared.
 
 The result was a clear U-shaped curve. Models were most accurate when the relevant
 information was at the very beginning or the very end of the input, and accuracy dropped
-noticeably, by more than 30 percentage points in some tests, when the same information
-sat in the middle of a long context. This pattern held across multiple model families,
+substantially, in some configurations by tens of percentage points, when the same
+information sat in the middle of a long context. This pattern held across multiple model families,
 including both open and closed models available at the time. In other words, giving a
 model more text does not just add information for free. Where you put that information
 inside the context changes whether the model actually uses it.
@@ -40,7 +40,8 @@ The standard answer to this problem is retrieval-augmented generation, or RAG: i
 stuffing a model's context with every document that might be relevant, a separate
 retrieval step searches a knowledge base for the specific passages most relevant to the
 current question, and only those get placed into the prompt. The idea traces back to a
-2020 paper from Meta AI researchers (Lewis et al.), and it became a standard part of
+2020 paper from Facebook AI Research (Lewis et al., the lab was renamed Meta AI the
+following year), and it became a standard part of
 production LLM applications through 2023 as teams ran into the limits of what a model's
 training data covered and needed a reliable way to ground answers in current or private
 information.

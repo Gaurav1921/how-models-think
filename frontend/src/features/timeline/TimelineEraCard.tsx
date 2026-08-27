@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Tag } from "../../components/common/Tag";
 import type { TimelineEvent } from "../../lib/types";
 
@@ -9,11 +9,25 @@ interface TimelineEraCardProps {
 /** A single timeline entry, positioned along the vertical rail with a marker dot. */
 export function TimelineEraCard({ event }: TimelineEraCardProps) {
   const [expanded, setExpanded] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  function closeExpanded() {
+    setExpanded(false);
+    triggerRef.current?.focus();
+  }
 
   useEffect(() => {
     if (!expanded) return;
+    closeButtonRef.current?.focus();
     function onKeyDown(keyboardEvent: KeyboardEvent) {
-      if (keyboardEvent.key === "Escape") setExpanded(false);
+      if (keyboardEvent.key === "Escape") closeExpanded();
+      if (keyboardEvent.key === "Tab") {
+        // The dialog has one focusable element, so keep focus pinned to it
+        // rather than letting Tab escape to the page behind the overlay.
+        keyboardEvent.preventDefault();
+        closeButtonRef.current?.focus();
+      }
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -43,6 +57,7 @@ export function TimelineEraCard({ event }: TimelineEraCardProps) {
           <figure className="w-40 shrink-0 sm:w-56">
             <button
               type="button"
+              ref={triggerRef}
               onClick={() => setExpanded(true)}
               className="block w-full cursor-zoom-in"
               aria-label={`Expand image: ${event.title}`}
@@ -65,8 +80,11 @@ export function TimelineEraCard({ event }: TimelineEraCardProps) {
 
       {expanded && event.image && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Expanded image: ${event.title}`}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6"
-          onClick={() => setExpanded(false)}
+          onClick={closeExpanded}
         >
           <figure className="flex max-h-full max-w-3xl flex-col items-center gap-3">
             <img
@@ -81,7 +99,11 @@ export function TimelineEraCard({ event }: TimelineEraCardProps) {
           </figure>
           <button
             type="button"
-            onClick={() => setExpanded(false)}
+            ref={closeButtonRef}
+            onClick={(clickEvent) => {
+              clickEvent.stopPropagation();
+              closeExpanded();
+            }}
             aria-label="Close expanded image"
             className="absolute top-6 right-6 text-2xl text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
           >

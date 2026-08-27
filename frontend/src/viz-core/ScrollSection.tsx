@@ -19,7 +19,7 @@ interface ScrollSectionProps {
  * useScrollStep, and also drives which state the visualization renders.
  */
 export function ScrollSection({ index, title, math, caption, steps, renderGraphic }: ScrollSectionProps) {
-  const { activeStep, registerStep } = useScrollStep(steps.length);
+  const { activeStep, registerStep } = useScrollStep();
 
   return (
     <section id={slugify(title)} className="grid scroll-mt-24 gap-8 py-16 lg:grid-cols-2 lg:items-start">

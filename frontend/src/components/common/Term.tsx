@@ -17,7 +17,7 @@ export function Term({ slug, children }: TermProps) {
   return (
     <span tabIndex={0} className="group relative border-b border-dotted border-current cursor-help outline-none">
       {children}
-      <span className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 w-64 -translate-x-1/2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-raised)] p-3 text-sm leading-snug text-[var(--color-text)] opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus:pointer-events-auto group-focus:opacity-100">
+      <span className="invisible pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 w-64 -translate-x-1/2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-raised)] p-3 text-sm leading-snug text-[var(--color-text)] opacity-0 shadow-lg transition-opacity group-hover:visible group-hover:pointer-events-auto group-hover:opacity-100 group-focus:visible group-focus:pointer-events-auto group-focus:opacity-100">
         <span className="mb-1 block font-mono text-xs text-[var(--color-text-muted)]">{term.term}</span>
         {term.short_definition}
         {term.read_more_href && (

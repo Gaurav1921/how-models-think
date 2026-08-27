@@ -17,14 +17,14 @@ const CHAIN_STEPS = [
 ];
 
 const GRADIENT_STEPS = [
-  "Training an RNN means backpropagating the error at the last step all the way back through every earlier step, repeatedly multiplying by roughly the same derivative each time.",
+  "Training an RNN means backpropagating the error at the last step all the way back through every earlier step, multiplying by a derivative at every step along the way. Those per-step derivatives aren't literally identical, they depend on the hidden-state values at each point in the sequence, but they tend to stay in a similar range, so the intuition below (repeated multiplication by roughly the same size number) is a fair approximation of what happens.",
   "Multiply a number smaller than 1 by itself dozens of times and it shrinks toward zero. That's the vanishing gradient problem: the training signal from distant tokens barely reaches the early weights, so the network struggles to learn long-range dependencies.",
   "Variants like LSTMs and GRUs added gating mechanisms specifically to fight this, and they helped a lot in practice, but the sequential, one-step-at-a-time bottleneck itself remained.",
 ];
 
 const WHY_REPLACED_STEPS = [
   "Self-attention lets every token look directly at every other token in a single step, regardless of how far apart they are. No chain of hidden states in between, no information bottleneck.",
-  "Because there's no step-by-step dependency, every token's attention can be computed in parallel on a GPU. That parallelism, more than anything else, is what made training today's large models feasible.",
+  "Because there's no step-by-step dependency, every token's attention can be computed in parallel on a GPU. That parallelism was a major enabler of today's large models, alongside the compute, data scale, and training-recipe advances that had to grow alongside it.",
   "The tradeoff: attention over a sequence of length n costs O(n^2), since every token compares against every other token, versus O(n) for an RNN, which only ever compares a token against the single running hidden state before it. For very long sequences that quadratic cost adds up. Both approaches have limits, just different ones.",
 ];
 

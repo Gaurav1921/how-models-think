@@ -55,11 +55,17 @@ export function TransformersExplainer() {
           both to its own earlier outputs and, through a separate
           cross-attention sublayer, to the encoder's output. This page
           covers the decoder half on its own, which is the architecture
-          GPT-style LLMs actually use for next-token prediction. Every
-          mechanism below, attention, <Term slug="multi-head-attention">multi-head attention</Term>,{" "}
-          <Term slug="positional-encoding">positional encoding</Term>, stacked
-          blocks, is identical either way. Cross-attention and the encoder
-          side get their own explainer later.
+          GPT-style LLMs actually use for next-token prediction. The core
+          interface below, attention, <Term slug="multi-head-attention">multi-head attention</Term>,
+          residual-and-normalize blocks stacked on top of each other, is the
+          same shape either way. Some details have moved on since 2017,
+          though: most modern decoder-only models place normalization inside
+          the residual branch rather than after it (Pre-LN, easier to train
+          at depth), and swap the paper's fixed sinusoidal{" "}
+          <Term slug="positional-encoding">positional encoding</Term> for
+          schemes like RoPE or ALiBi. This page teaches the original paper's
+          version of both, since the reasoning behind them carries over.
+          Cross-attention and the encoder side get their own explainer later.
         </div>
       </header>
 

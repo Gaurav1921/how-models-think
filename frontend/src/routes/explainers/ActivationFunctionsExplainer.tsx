@@ -165,8 +165,11 @@ export function ActivationFunctionsExplainer() {
           The highest score doesn't just win outright, it gets amplified
           into the largest probability, but every class keeps some nonzero
           share. Softmax is effectively sigmoid generalized to more than two
-          classes, and it's used only at the output layer of a multi-class
-          classifier.
+          classes. It shows up at the output layer of a multi-class
+          classifier, and anywhere else a set of scores needs to become a
+          probability distribution, including inside every attention head
+          of a transformer, turning attention scores into weights that sum
+          to 1.
         </p>
       </section>
       <ScrollEnd />

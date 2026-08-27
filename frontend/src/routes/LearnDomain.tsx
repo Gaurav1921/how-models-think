@@ -57,6 +57,11 @@ export function LearnDomain() {
   const categoriesState = useApi(getCurriculumCategories);
   const explainersState = useApi(getExplainers);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [previousDomainSlug, setPreviousDomainSlug] = useState(domainSlug);
+  if (domainSlug !== previousDomainSlug) {
+    setPreviousDomainSlug(domainSlug);
+    setActiveCategory(null);
+  }
 
   const loading = domainsState.status === "loading" || categoriesState.status === "loading" || explainersState.status === "loading";
   const errored = domainsState.status === "error" || categoriesState.status === "error" || explainersState.status === "error";

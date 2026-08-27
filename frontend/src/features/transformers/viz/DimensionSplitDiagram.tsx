@@ -29,9 +29,16 @@ export function DimensionSplitDiagram() {
         <span className="font-mono text-xs text-[var(--color-text-muted)]">
           split across {HEAD_COUNT} heads, d_k = {HEAD_DIM} each
         </span>
-        <div className="mt-1 flex h-6 w-full gap-0.5">
+        <div className="mt-1 flex h-8 w-full gap-0.5">
           {HEAD_COLORS.map((color, index) => (
-            <div key={index} className="flex-1 rounded-sm" style={{ backgroundColor: color }} title={`head ${index + 1}`} />
+            <div
+              key={index}
+              className="flex flex-1 items-center justify-center rounded-sm font-mono text-[10px] font-medium text-black/70"
+              style={{ backgroundColor: color }}
+              title={`head ${index + 1}`}
+            >
+              {index + 1}
+            </div>
           ))}
         </div>
       </div>

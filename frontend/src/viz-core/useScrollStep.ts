@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
  * callback. A step becomes active when it crosses the vertical center band
  * of the viewport, using a single shared IntersectionObserver.
  */
-export function useScrollStep(stepCount: number) {
+export function useScrollStep() {
   const [activeStep, setActiveStep] = useState(0);
   const stepNodes = useRef<(HTMLElement | null)[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -35,21 +35,22 @@ export function useScrollStep(stepCount: number) {
     return () => observer.disconnect();
   }, []);
 
-  const registerStep = useCallback(
-    (index: number) => (node: HTMLElement | null) => {
+  // registerStep(index) must return the same function reference across
+  // renders for a given index, or React treats the ref as changed on every
+  // render (since ScrollSection re-renders on every activeStep change) and
+  // tears down/reattaches the IntersectionObserver registration constantly.
+  const registerStepFns = useRef<((node: HTMLElement | null) => void)[]>([]);
+
+  const registerStep = useCallback((index: number) => {
+    registerStepFns.current[index] ??= (node: HTMLElement | null) => {
       const observer = observerRef.current;
       const previous = stepNodes.current[index];
       if (previous && observer) observer.unobserve(previous);
       stepNodes.current[index] = node;
       if (node && observer) observer.observe(node);
-    },
-    [],
-  );
+    };
+    return registerStepFns.current[index];
+  }, []);
 
-  const goToStep = useCallback((index: number) => {
-    const clamped = Math.max(0, Math.min(stepCount - 1, index));
-    stepNodes.current[clamped]?.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, [stepCount]);
-
-  return { activeStep, registerStep, goToStep };
+  return { activeStep, registerStep };
 }

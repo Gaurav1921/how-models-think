@@ -19,8 +19,9 @@ The core trick behind "reasoning models" is not new in principle. Researchers ha
 already shown, in a 2022 paper on chain-of-thought prompting by Jason Wei and
 colleagues, that asking a model to write out its intermediate reasoning steps before
 giving a final answer made it noticeably better at math and logic problems, even without
-changing the model itself. What changed with models like OpenAI's o1, released in
-September 2024, is that this behavior got trained into the model directly, using
+changing the model itself. What changed with models like OpenAI's o1, whose preview
+shipped in September 2024 ahead of a full release that December, is that this behavior
+got trained into the model directly, using
 reinforcement learning, rather than relying on a user to prompt for it. The model
 learns, from its own training process, when a problem calls for a long chain of internal
 reasoning and when a short direct answer is fine.
@@ -46,11 +47,11 @@ reasoning was a general technique other labs could reproduce, not something only
 company's training pipeline could produce, and it put a capable reasoning model into the
 hands of anyone who wanted to download and run it themselves.
 
-By the second half of 2025, reasoning had stopped being a separate, specialized model
-you had to choose. OpenAI's GPT-5 and Anthropic's Claude 4 models both shipped as hybrid
-systems that decide on their own whether a given request needs a fast direct answer or
-an extended reasoning pass, instead of asking the user to pick between two different
-model names.
+Through 2025, reasoning had stopped being a separate, specialized model you had to
+choose. Anthropic's Claude 4 models shipped in May 2025 with hybrid reasoning built in,
+and OpenAI's GPT-5 followed in August with its own auto-routing between a fast direct
+answer and an extended reasoning pass, instead of asking the user to pick between two
+different model names.
 
 ## Why this matters if you are building with these models
 

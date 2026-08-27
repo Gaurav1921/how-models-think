@@ -47,23 +47,27 @@ export function AttentionMatrix({ tokens, weights, causal = false }: AttentionMa
             </div>
             {weights[rowIndex].map((weight, columnIndex) => {
               const isMasked = causal && columnIndex > rowIndex;
+              const description = isMasked
+                ? `${rowToken} cannot attend to ${tokens[columnIndex]}: it comes later`
+                : `${rowToken} attends to ${tokens[columnIndex]} with weight ${weight.toFixed(2)}`;
               return (
                 <div
                   key={`cell-${rowIndex}-${columnIndex}`}
+                  tabIndex={0}
+                  role="img"
+                  aria-label={description}
                   onMouseEnter={() => setHoveredRow(rowIndex)}
                   onMouseLeave={() => setHoveredRow(null)}
-                  title={
-                    isMasked
-                      ? `${rowToken} cannot attend to ${tokens[columnIndex]}: it comes later`
-                      : `${rowToken} -> ${tokens[columnIndex]}: ${weight.toFixed(2)}`
-                  }
+                  onFocus={() => setHoveredRow(rowIndex)}
+                  onBlur={() => setHoveredRow(null)}
+                  title={description}
                   style={{
                     width: cellSize,
                     height: cellSize,
                     ...(isMasked ? maskedCellStyle : { backgroundColor: cellColor(weight) }),
                     opacity: hoveredRow === null || hoveredRow === rowIndex ? 1 : 0.25,
                   }}
-                  className="flex items-center justify-center rounded-sm font-mono text-[10px] text-[var(--color-text)] transition-opacity"
+                  className="flex items-center justify-center rounded-sm font-mono text-[10px] text-[var(--color-text)] outline-offset-1 transition-opacity"
                 >
                   {!isMasked && weight >= 0.1 ? weight.toFixed(1) : ""}
                 </div>

@@ -5,7 +5,7 @@ import { ScrollSection } from "../../../viz-core/ScrollSection";
 import { vizColors } from "../../../viz-core/colors";
 
 const STEPS = [
-  "Attention, as described so far, has no notion of order: it treats the tokens as a set, not a sequence.",
+  "Attention, as described so far, has no notion of distance. The causal mask already tells a token which positions came before it, but nothing about how far back, one step earlier and a hundred steps earlier look identical without more information.",
   "So before attention runs, a positional encoding vector, built from sine and cosine waves at different frequencies, is added directly onto each token's embedding (first scaled up by sqrt(d_model), so its size is comparable to the positional signal being added to it).",
   "The paper chose these specific sine and cosine waves over a learned position vector for two reasons: the fixed, regular pattern should make it easy for the model to learn to attend by relative position, and it should let the model handle sequences longer than any it saw during training.",
   "In practice, this means every position in the sequence gets added a different, but consistent, fingerprint.",
